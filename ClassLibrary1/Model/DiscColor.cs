@@ -9,5 +9,6 @@ namespace Othello.Model
     public enum DiscColor
     { 
         Black, White, None
+
     }
 }

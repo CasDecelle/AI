@@ -10,7 +10,6 @@ namespace Othello.AI
 {
     public class State
     {
-        //test test test
         private HeuristicBoard board;
         private bool maxNode;
         private double heuristicValue;

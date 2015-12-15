@@ -25,6 +25,8 @@ namespace Othello.AI
             {
                 HeuristicBoard board = new HeuristicBoard(parentState.Board, new BasicHeuristics());
                 board.MakeMove(move.Item1, move.Item2, color, board.IsMoveValid(move.Item1, move.Item2, color));
+                DiscColor oppositeColor = new Disc(color).InvertDisc();
+                this.AddChildren(new State(parentState), depth -1, oppositeColor);
             }
         }
     }
