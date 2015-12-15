@@ -6,36 +6,28 @@ using System.Threading.Tasks;
 
 namespace Othello.AI.Util
 {
-    public class Node<T>
+    public class Node
     {
-        private T data;
-        private LinkedList<Node<T>> children;
+        private LinkedList<Node> children;
         private bool isLeaf;
 
-        public T Data
+        public Node()
         {
-            get { return this.data; }
-            set { this.data = value; }
-        }
-
-        public Node(T data)
-        {
-            this.data = data;
             isLeaf = true;
-            children = new LinkedList<Node<T>>();
+            children = new LinkedList<Node>();
         }
 
-        public void AddChild(Node<T> n)
+        public void AddChild(Node n)
         {
             isLeaf = false;
             children.AddFirst(n);
         }
 
-        public Node<T> GetChild(int i)
+        public Node GetChild(int i)
         {
-            foreach (Node<T> t in children)
+            foreach (Node n in children)
                 if (--i == 0)
-                    return t;
+                    return n;
             return null;
         }
     }

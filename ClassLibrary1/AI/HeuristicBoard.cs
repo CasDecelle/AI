@@ -9,11 +9,17 @@ namespace Othello.AI
 {
     public class HeuristicBoard : Board
     {
+        private Player maxPlayer;
+        private NodeType nodeType;
         private IHeuristic heuristic;
+        private int maxDepth;
 
-        public HeuristicBoard(Board b, IHeuristic h) : base(b)
+        public HeuristicBoard(Board b, IHeuristic h, Player p, NodeType t, int d) : base(b)
         {
-            heuristic = h;
+            this.maxPlayer = p;
+            this.nodeType = t;
+            this.heuristic = h;
+            this.maxDepth = d;
         }
     }
 }

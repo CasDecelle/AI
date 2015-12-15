@@ -43,8 +43,9 @@
     <Compile Include="AI\BasicHeuristics.cs" />
     <Compile Include="AI\HeuristicBoard.cs" />
     <Compile Include="AI\IHeuristic.cs" />
-    <Compile Include="AI\State.cs" />
-    <Compile Include="AI\StateTreeBuilder.cs" />
+    <Compile Include="AI\NodeType.cs" />
+    <Compile Include="AI\StateSpace.cs" />
+    <Compile Include="AI\StateSpaceNode.cs" />
     <Compile Include="AI\Util\Node.cs" />
     <Compile Include="AI\Util\Tree.cs" />
     <Compile Include="Controller\Game.cs" />

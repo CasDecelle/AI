@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Othello.AI.Util
 {
-    public class Tree<T>
+    public class Tree
     {
-        private Node<T> root;
+        private Node root;
 
-        public Tree(Node<T> root) {
+        public Tree(Node root) {
             this.root = root;
         }
 
