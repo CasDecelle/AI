@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Othello", "ClassLibrary1\Othello.csproj", "{86A1D3F7-F1C1-45A6-A0F4-7201A74958B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{9C7E451A-A809-4A21-82A3-DD0CF14B5317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGUI", "WpfApplication1\WpfGUI.csproj", "{4259F768-5F67-4321-9653-A2BE7C92251C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86A1D3F7-F1C1-45A6-A0F4-7201A74958B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A1D3F7-F1C1-45A6-A0F4-7201A74958B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A1D3F7-F1C1-45A6-A0F4-7201A74958B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A1D3F7-F1C1-45A6-A0F4-7201A74958B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7E451A-A809-4A21-82A3-DD0CF14B5317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7E451A-A809-4A21-82A3-DD0CF14B5317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7E451A-A809-4A21-82A3-DD0CF14B5317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7E451A-A809-4A21-82A3-DD0CF14B5317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4259F768-5F67-4321-9653-A2BE7C92251C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4259F768-5F67-4321-9653-A2BE7C92251C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4259F768-5F67-4321-9653-A2BE7C92251C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4259F768-5F67-4321-9653-A2BE7C92251C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

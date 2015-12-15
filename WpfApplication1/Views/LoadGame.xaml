@@ -1,0 +1,122 @@
+﻿<Page x:Class="WpfGUI.Views.LoadGame"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="LoadGame">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1"></RowDefinition>
+            <RowDefinition Height="449*"></RowDefinition>
+            <RowDefinition Height="1"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1"></ColumnDefinition>
+            <ColumnDefinition Width="449*"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Row="1" Grid.Column="1" Background="Green">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="55*"/>
+            </Grid.ColumnDefinitions>
+            <Ellipse x:Name="Disc0_0" Margin="2, 2, 2, 2" Grid.Row="0" Grid.Column="0" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc0_1" Margin="2, 2, 2, 2" Grid.Row="0" Grid.Column="1" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc0_2" Margin="2, 2, 2, 2" Grid.Row="0" Grid.Column="2" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc0_3" Margin="2, 2, 2, 2" Grid.Row="0" Grid.Column="3" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc0_4" Margin="2, 2, 2, 2" Grid.Row="0" Grid.Column="4" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc0_5" Margin="2, 2, 2, 2" Grid.Row="0" Grid.Column="5" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc0_6" Margin="2, 2, 2, 2" Grid.Row="0" Grid.Column="6" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc0_7" Margin="2, 2, 2, 2" Grid.Row="0" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc1_0" Margin="2, 2, 2, 2" Grid.Row="1" Grid.Column="0" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc1_1" Margin="2, 2, 2, 2" Grid.Row="1" Grid.Column="1" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc1_2" Margin="2, 2, 2, 2" Grid.Row="1" Grid.Column="2" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc1_3" Margin="2, 2, 2, 2" Grid.Row="1" Grid.Column="3" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc1_4" Margin="2, 2, 2, 2" Grid.Row="1" Grid.Column="4" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc1_5" Margin="2, 2, 2, 2" Grid.Row="1" Grid.Column="5" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc1_6" Margin="2, 2, 2, 2" Grid.Row="1" Grid.Column="6" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc1_7" Margin="2, 2, 2, 2" Grid.Row="1" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc2_0" Margin="2, 2, 2, 2" Grid.Row="2" Grid.Column="0" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc2_1" Margin="2, 2, 2, 2" Grid.Row="2" Grid.Column="1" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc2_2" Margin="2, 2, 2, 2" Grid.Row="2" Grid.Column="2" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc2_3" Margin="2, 2, 2, 2" Grid.Row="2" Grid.Column="3" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc2_4" Margin="2, 2, 2, 2" Grid.Row="2" Grid.Column="4" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc2_5" Margin="2, 2, 2, 2" Grid.Row="2" Grid.Column="5" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc2_6" Margin="2, 2, 2, 2" Grid.Row="2" Grid.Column="6" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc2_7" Margin="2, 2, 2, 2" Grid.Row="2" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc3_0" Margin="2, 2, 2, 2" Grid.Row="3" Grid.Column="0" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc3_1" Margin="2, 2, 2, 2" Grid.Row="3" Grid.Column="1" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc3_2" Margin="2, 2, 2, 2" Grid.Row="3" Grid.Column="2" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc3_3" Margin="2, 2, 2, 2" Grid.Row="3" Grid.Column="3" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc3_4" Margin="2, 2, 2, 2" Grid.Row="3" Grid.Column="4" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc3_5" Margin="2, 2, 2, 2" Grid.Row="3" Grid.Column="5" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc3_6" Margin="2, 2, 2, 2" Grid.Row="3" Grid.Column="6" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc3_7" Margin="2, 2, 2, 2" Grid.Row="3" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc4_0" Margin="2, 2, 2, 2" Grid.Row="4" Grid.Column="0" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc4_1" Margin="2, 2, 2, 2" Grid.Row="4" Grid.Column="1" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc4_2" Margin="2, 2, 2, 2" Grid.Row="4" Grid.Column="2" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc4_3" Margin="2, 2, 2, 2" Grid.Row="4" Grid.Column="3" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc4_4" Margin="2, 2, 2, 2" Grid.Row="4" Grid.Column="4" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc4_5" Margin="2, 2, 2, 2" Grid.Row="4" Grid.Column="5" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc4_6" Margin="2, 2, 2, 2" Grid.Row="4" Grid.Column="6" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc4_7" Margin="2, 2, 2, 2" Grid.Row="4" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc5_0" Margin="2, 2, 2, 2" Grid.Row="5" Grid.Column="0" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc5_1" Margin="2, 2, 2, 2" Grid.Row="5" Grid.Column="1" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc5_2" Margin="2, 2, 2, 2" Grid.Row="5" Grid.Column="2" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc5_3" Margin="2, 2, 2, 2" Grid.Row="5" Grid.Column="3" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc5_4" Margin="2, 2, 2, 2" Grid.Row="5" Grid.Column="4" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc5_5" Margin="2, 2, 2, 2" Grid.Row="5" Grid.Column="5" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc5_6" Margin="2, 2, 2, 2" Grid.Row="5" Grid.Column="6" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc5_7" Margin="2, 2, 2, 2" Grid.Row="5" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc6_0" Margin="2, 2, 2, 2" Grid.Row="6" Grid.Column="0" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc6_1" Margin="2, 2, 2, 2" Grid.Row="6" Grid.Column="1" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc6_2" Margin="2, 2, 2, 2" Grid.Row="6" Grid.Column="2" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc6_3" Margin="2, 2, 2, 2" Grid.Row="6" Grid.Column="3" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc6_4" Margin="2, 2, 2, 2" Grid.Row="6" Grid.Column="4" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc6_5" Margin="2, 2, 2, 2" Grid.Row="6" Grid.Column="5" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc6_6" Margin="2, 2, 2, 2" Grid.Row="6" Grid.Column="6" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc6_7" Margin="2, 2, 2, 2" Grid.Row="6" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc7_0" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="0" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc7_1" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="1" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc7_2" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="2" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc7_3" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="3" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc7_4" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="4" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc7_5" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="5" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc7_6" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="6" Fill="Green" MouseUp="ClickOnDisc" />
+            <Ellipse x:Name="Disc7_7" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
+        </Grid>
+        <Canvas Grid.Row="1" Grid.Column="2">
+            <StackPanel Canvas.Top="0" Canvas.Left="0">
+                <StackPanel Orientation="Horizontal">
+                    <Label>Your turn</Label>
+                    <Label x:Name="playerName" FontWeight="ExtraBold"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Color:</Label>
+                    <Label x:Name="playerColor" FontWeight="ExtraBold"></Label>
+                </StackPanel>
+            </StackPanel>
+            <Button Width="150" Click="MainMenu" Canvas.Bottom="0" Canvas.Left="0">Exit Game</Button>
+        </Canvas>
+    </Grid>   
+</Page>
