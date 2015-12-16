@@ -22,7 +22,10 @@ namespace Othello.Model
 
         public Disc(Disc d)
         {
-            this.Color = d.Color == DiscColor.White ? DiscColor.White : DiscColor.Black;
+            if (d != null)
+            {
+                this.Color = d.Color == DiscColor.White ? DiscColor.White : DiscColor.Black;
+            }
         }
 
         public void InvertDisc() {

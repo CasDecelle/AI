@@ -15,8 +15,10 @@ namespace Othello.AI
         private NodeType type;
         private double heuristicsValue;
 
-        public double HeuristicValue { get; set; }
-        public HeuristicBoard HeuristicBoard { get; set; }
+        public HeuristicBoard HeuristicBoard
+        {
+            get { return this.board; }
+        }
         public NodeType NodeType { get; set; }
 
         public StateSpaceNode(HeuristicBoard b, Player p, NodeType t)

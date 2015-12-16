@@ -11,7 +11,7 @@ namespace Othello.AI
     {
         public double CalculateHeuristicValue(HeuristicBoard board, DiscColor color)
         {
-            return board.countDiscs(color);
+            return board.CountDiscs(color);
         }
     }
 }

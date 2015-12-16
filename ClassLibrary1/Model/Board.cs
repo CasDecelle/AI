@@ -25,11 +25,11 @@ namespace Othello.Model
 
         public Board(Board b)
         {
-            this.BoardSquares = new Square[this.MAX_SQUARE_COUNT, this.MAX_SQUARE_COUNT];
+            this.boardSquares = new Square[this.MAX_SQUARE_COUNT, this.MAX_SQUARE_COUNT];
             for (int i = 0; i < this.MAX_SQUARE_COUNT; i++) {
                 for (int j = 0; j < this.MAX_SQUARE_COUNT; j++)
                 {
-                    this.BoardSquares[i, j] = new Square(b.BoardSquares[i, j]);
+                    this.boardSquares[i, j] = new Square(b.BoardSquares[i, j]);
                 }
             }
         }
@@ -74,6 +74,8 @@ namespace Othello.Model
                     tmpCol += directionCol;
                 } while (this.boardSquares[tmpRow, tmpCol].Disc != null && this.boardSquares[tmpRow, tmpCol].Disc.Color != color);
             }
+
+            
         }
 
         public void InvertDisc(Disc d)
@@ -175,7 +177,7 @@ namespace Othello.Model
             return boardString.ToString();
         }
 
-        public int countDiscs(DiscColor color)
+        public int CountDiscs(DiscColor color)
         {
             int count = 0;
             foreach (Square square in this.boardSquares)

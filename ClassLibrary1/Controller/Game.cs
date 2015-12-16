@@ -1,10 +1,11 @@
-﻿using Othello.Model;
+﻿using Othello.AI;
+using Othello.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Othello.Controller
 {
@@ -14,6 +15,7 @@ namespace Othello.Controller
         private LinkedList<Player> players;
         private Player currentPlayer;
         private bool isFinished;
+        public readonly int MAX_DEPTH = 3;
 
         public Board Board { 
             get { return this.board; } 
@@ -91,15 +93,23 @@ namespace Othello.Controller
         public bool ExecuteValidMove(int row, int col)
         {
             
-            ArrayList flankingDirectons = this.board.IsMoveValid(row, col, currentPlayer.Color);
+            ArrayList flankingDirections = this.board.IsMoveValid(row, col, currentPlayer.Color);
 
-            if (flankingDirectons != null)
+            if (flankingDirections != null)
             {
-                this.board.MakeMove(row, col, currentPlayer.Color, flankingDirectons);
+                this.board.MakeMove(row, col, currentPlayer.Color, flankingDirections);
                 this.PickPlayer();
+                // AI move
+                if (this.currentPlayer.GetType() == typeof(Robot))
+                {
+                    StateSpace stateSpace = new StateSpace(this.board, new BasicHeuristics(), this.MAX_DEPTH, this.currentPlayer);
+                    Tuple<int,int> move = stateSpace.GetBestMove();
+                    flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, currentPlayer.Color);
+                    this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
+                }
             }
 
-            return flankingDirectons != null;
+            return flankingDirections != null;
         }
     }
 }
