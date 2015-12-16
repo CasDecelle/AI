@@ -92,9 +92,7 @@ namespace Othello.Controller
 
         public bool ExecuteValidMove(int row, int col)
         {
-            
             ArrayList flankingDirections = this.board.IsMoveValid(row, col, currentPlayer.Color);
-
             if (flankingDirections != null)
             {
                 this.board.MakeMove(row, col, currentPlayer.Color, flankingDirections);
@@ -106,13 +104,22 @@ namespace Othello.Controller
                     Tuple<int,int> move = stateSpace.GetBestMove();
                     flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, currentPlayer.Color);
                     // Make AI wait a second so move is easier to see
+                    //TODO listener maken om gui te updaten en hier notify
                     //Thread.Sleep(1000);
                     this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
                     this.PickPlayer();
                 }
             }
-
+            this.UpdateScore();
             return flankingDirections != null;
+        }
+
+        private void UpdateScore()
+        {
+            foreach (Player p in this.players)
+            {
+                p.Score = this.board.CountDiscs(p.Color);
+            }
         }
     }
 }

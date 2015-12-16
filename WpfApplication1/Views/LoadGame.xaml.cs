@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace WpfGUI.Views
 {
@@ -83,6 +84,7 @@ namespace WpfGUI.Views
         {
             playerName.Content = controller.CurrentPlayer.Name;
             playerColor.Content = controller.CurrentPlayer.Color.ToString();
+            playerScore.Content = controller.CurrentPlayer.Score;
         }
 
         public void MainMenu(object sender, EventArgs e)

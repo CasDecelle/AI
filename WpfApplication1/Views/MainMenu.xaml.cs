@@ -58,11 +58,6 @@ namespace WpfGUI.Views
             Switcher.pageSwitcher.Navigate(new LoadGame(this.controller));
         }
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            CommandManager.InvalidateRequerySuggested();
-        }
-
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if (nameTextBox.Text.Equals("Player name"))

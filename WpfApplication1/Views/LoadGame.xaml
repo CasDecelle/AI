@@ -115,6 +115,10 @@
                     <Label>Color:</Label>
                     <Label x:Name="playerColor" FontWeight="ExtraBold"></Label>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Score:</Label>
+                    <Label x:Name="playerScore" FontWeight="ExtraBold"></Label>
+                </StackPanel>
             </StackPanel>
             <Button Width="150" Click="MainMenu" Canvas.Bottom="0" Canvas.Left="0">Exit Game</Button>
         </Canvas>
