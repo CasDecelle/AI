@@ -105,7 +105,10 @@ namespace Othello.Controller
                     StateSpace stateSpace = new StateSpace(this.board, new BasicHeuristics(), this.MAX_DEPTH, this.currentPlayer);
                     Tuple<int,int> move = stateSpace.GetBestMove();
                     flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, currentPlayer.Color);
+                    // Make AI wait a second so move is easier to see
+                    //Thread.Sleep(1000);
                     this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
+                    this.PickPlayer();
                 }
             }
 

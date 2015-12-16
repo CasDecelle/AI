@@ -38,7 +38,19 @@ namespace Othello.Model
         /*
          * Copy constructor 
         */
-        public Square(Square sq) { this.col = sq.col; this.row = sq.row; this.disc = new Disc(sq.Disc); }
+        public Square(Square sq)
+        {
+            this.col = sq.col;
+            this.row = sq.row;
+            if (sq.Disc != null)
+            {
+                this.disc = new Disc(sq.Disc);
+            }
+            else
+            {
+                this.Disc = null;
+            }
+        }
 
         public bool isOccupied(Square sq) { return this.disc != null; }
 

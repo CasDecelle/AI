@@ -14,6 +14,11 @@ namespace Othello.AI
         private IHeuristic heuristic;
         private int maxDepth;
 
+        public IHeuristic Heuristic 
+        {
+            get { return this.heuristic;  }
+        }
+
         public HeuristicBoard(Board b, IHeuristic h, Player p, NodeType t, int d) : base(b)
         {
             this.maxPlayer = p;

@@ -125,7 +125,7 @@ namespace Othello.Model
             {
                 for (int j = 0; j < this.MAX_SQUARE_COUNT; j++)
                 {
-                    if (IsMoveValid(i, j, color) != null)
+                    if (this.IsMoveValid(i, j, color) != null)
                     {
                         returnList.Add(Tuple.Create(i, j));
                     }
@@ -182,7 +182,7 @@ namespace Othello.Model
             int count = 0;
             foreach (Square square in this.boardSquares)
             {
-                if (square.Disc.Color == color) count++;
+                if (square.Disc != null && square.Disc.Color == color) count++;
             }
             return count;
         }

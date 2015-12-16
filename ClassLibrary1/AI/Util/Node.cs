@@ -11,8 +11,11 @@ namespace Othello.AI.Util
         private LinkedList<Node> children;
         private bool isLeaf;
 
-        public LinkedList<Node> Children { get; set; }
-        public bool IsLead { get; set; }
+        public LinkedList<Node> Children
+        {
+            get { return this.children;  } 
+        }
+        public bool IsLeaf { get; set; }
 
         public Node()
         {
