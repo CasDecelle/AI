@@ -9,7 +9,7 @@ namespace Othello.AI
 {
     class BasicHeuristics : IHeuristic
     {
-        public double CalculateHeuristicValue(HeuristicBoard board, DiscColor color)
+        public double CalculateHeuristicValue(AIBoard board, DiscColor color)
         {
             double heuristicValue = board.CountDiscs(color);
             return heuristicValue;

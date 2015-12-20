@@ -11,10 +11,10 @@ namespace Othello.AI
 {
     public class StateSpace
     {
-        //private HeuristicBoard board;
         private int maxDepth;
         private StateSpaceNode maxNode;
         private readonly Player maxPlayer;
+        private List<StateSpaceNode> tree;
 
         /*
         public HeuristicBoard Board
@@ -23,11 +23,12 @@ namespace Othello.AI
             set { this.board = value; }
         }*/
 
-        public StateSpace(Board b, IHeuristic h, int d, Player p)
+        public StateSpace(Board b, int d, Player p)
         {
             this.maxDepth = d;
             this.maxPlayer = p;
-            this.BuildStateSpace(b, h);
+            this.BuildStateSpace(b);
+            this.tree = new List<StateSpaceNode>();
             //this.maxNode.CalculateHeuristic();
         }
 
@@ -36,50 +37,74 @@ namespace Othello.AI
             //board = previousState.board;
         }
 
-        private void BuildStateSpace(Board b, IHeuristic h)
+        private void BuildStateSpace(Board b)
         {
-            this.maxNode = new StateSpaceNode(new HeuristicBoard(b, h, this.maxPlayer, NodeType.MAX_NODE, this.maxDepth), this.maxPlayer, NodeType.MAX_NODE);
-            this.AddChildren(this.maxNode, h, this.maxDepth, this.maxPlayer, this.maxPlayer.Color);
+            this.maxNode = new StateSpaceNode(new AIBoard(b, this.maxPlayer, NodeType.MAX_NODE, this.maxDepth), this.maxPlayer, NodeType.MAX_NODE);
+            this.AddChildren(this.maxNode, this.maxDepth, this.maxPlayer, this.maxPlayer.Color);
         }
 
-        private void AddChildren(StateSpaceNode parentNode, IHeuristic heuristic, int depth, Player player, DiscColor color)
+        private void AddChildren(StateSpaceNode parentNode, int depth, Player player, DiscColor color)
         {
             if (depth == 0) return;
 
             ArrayList validMoves = new ArrayList();
-            validMoves = parentNode.HeuristicBoard.GetValidMovesForPlayer(color);
+            validMoves = parentNode.Board.GetValidMovesForPlayer(color);
 
             foreach (Tuple<int, int> move in validMoves)
             {
-                if (move != null)
+                if (validMoves != null && move != null)
                 {
-                    HeuristicBoard b = new HeuristicBoard(parentNode.HeuristicBoard, heuristic, this.maxPlayer, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), depth);
+                    //Make new AIBoard based on the original board
+                    AIBoard b = new AIBoard(parentNode.Board, this.maxPlayer, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), depth);
+                    
+                    //Execute Move
                     ArrayList flankingDirections = new ArrayList();
                     flankingDirections = b.IsMoveValid(move.Item1, move.Item2, color);
                     b.MakeMove(move.Item1, move.Item2, color, flankingDirections);
-                    StateSpaceNode node = new StateSpaceNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move);
+                    
+                    //Construct StateSpaceNode
+                    StateSpaceNode node = new StateSpaceNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move, color);
+                    //node.HeuristicValue = b.GetHeuristicValue(b, color);
                     parentNode.AddChild(node);
+                   // tree.Add(node);
+
+                    //New DiscColor
                     Disc invertedDisc = new Disc(color);
                     invertedDisc.InvertDisc();
-                    this.AddChildren(node, heuristic, depth - 1, player, invertedDisc.Color);
+
+                    //Recursive call for new state
+                    this.AddChildren(node, depth - 1, player, invertedDisc.Color);
+
+                    node.CalculateHeuristicValue();
                 }
             }
         }
 
-        public Tuple<int, int> GetBestMove()
+        public StateSpaceNode GetBestMove()
         {
-            Tuple<int, int> move = null;
-            double heuristicValue = 0;
+          /*  Tuple<int, int> move = null;
             // neemt enkel children van root voorlopig, TODO hele boom doorzoeken
-            foreach (StateSpaceNode n in this.maxNode.Children)
-            {
-                if (n.CalculateHeuristic() > heuristicValue)
-                {
-                    heuristicValue = n.CalculateHeuristic();
-                    move = n.Move;
-                }
+            List<StateSpaceNode> leafs = tree.Where(n => n.IsLeaf).ToList();
+            foreach(StateSpaceNode l in leafs) {
+                l.HeuristicValue = l.Board.GetHeuristicValue(l.CurrentColor);
             }
-            return move;
+            List<StateSpaceNode> nodesToProcess = tree.Where(n => n.Children.Intersect(leafs).Any()).ToList();
+           
+
+            foreach (StateSpaceNode n in nodesToProcess)
+            {
+                switch (n.NodeType)
+                {
+                    case NodeType.MAX_NODE:
+                        n.HeuristicValue = nodesToProcess.Max(np => np.HeuristicValue);
+                        no
+                        break;
+                    case NodeType.MIN_NODE:
+                        n.HeuristicValue = nodesToProcess.Min(np => np.HeuristicValue);
+                        break;
+                }
+            }*/
+            return (StateSpaceNode) maxNode.Children.First(mn => ((StateSpaceNode)mn).HeuristicValue == maxNode.Children.Max(node => ((StateSpaceNode)node).HeuristicValue));
         }
     }
 }

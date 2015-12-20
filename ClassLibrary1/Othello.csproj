@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI\BasicHeuristics.cs" />
-    <Compile Include="AI\HeuristicBoard.cs" />
+    <Compile Include="AI\AIBoard.cs" />
+    <Compile Include="AI\HeuristicValueDeterminator.cs" />
     <Compile Include="AI\IHeuristic.cs" />
     <Compile Include="AI\NodeType.cs" />
+    <Compile Include="AI\SimpleHeuristicValueDeterminator.cs" />
     <Compile Include="AI\StateSpace.cs" />
     <Compile Include="AI\StateSpaceNode.cs" />
     <Compile Include="AI\Util\Node.cs" />

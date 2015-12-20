@@ -40,6 +40,7 @@ namespace WpfGUI.Views
             controller.ExecuteValidMove(row, col);
             UpdateBoard();
             UpdatePlayer();
+            //Thread.Sleep(10000);
         }
 
         public void StartGame()

@@ -100,9 +100,11 @@ namespace Othello.Controller
                 // AI move
                 if (this.currentPlayer.GetType() == typeof(Robot))
                 {
-                    StateSpace stateSpace = new StateSpace(this.board, new BasicHeuristics(), this.MAX_DEPTH, this.currentPlayer);
-                    Tuple<int,int> move = stateSpace.GetBestMove();
-                    flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, currentPlayer.Color);
+                    Robot beepBoop = (Robot)currentPlayer;
+                    Tuple<int, int> move = beepBoop.GetMove();
+                  /*  StateSpace stateSpace = new StateSpace(this.board, this.MAX_DEPTH, this.currentPlayer);
+                    Tuple<int,int> move = stateSpace.GetBestMove();*/
+                    flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
                     // Make AI wait a second so move is easier to see
                     //TODO listener maken om gui te updaten en hier notify
                     //Thread.Sleep(1000);

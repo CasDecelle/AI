@@ -8,14 +8,21 @@ namespace Othello.AI.Util
 {
     public class Node
     {
+        private Node parent;
         private LinkedList<Node> children;
         private bool isLeaf;
+
+        public bool IsLeaf
+        {
+            get { return isLeaf; }
+            set { isLeaf = value; }
+        }
 
         public LinkedList<Node> Children
         {
             get { return this.children;  } 
         }
-        public bool IsLeaf { get; set; }
+       // public bool IsLeaf { get; set; }
 
         public Node()
         {
@@ -26,6 +33,7 @@ namespace Othello.AI.Util
         public void AddChild(Node n)
         {
             isLeaf = false;
+            n.parent = this;
             children.AddFirst(n);
         }
 

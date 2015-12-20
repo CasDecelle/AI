@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Othello.AI
 {
-    public interface IHeuristic
+    public interface HeuristicValueDeterminator
     {
-        double CalculateHeuristicValue(AIBoard board, DiscColor color);
+        double CalculateHeuristicValue(AIBoard b, DiscColor color);
     }
 }
