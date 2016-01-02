@@ -34,25 +34,55 @@
             <Button Margin="0,0,0,5" Width ="100" Click="Highscores">Highscores</Button>
             <Button Margin="0,0,0,5" Width ="100" Click="Options">Options</Button>
             <Label></Label>
+            <Label></Label>
             
             <StackPanel x:Name="pickPlayerGrid" 
                         Visibility="Hidden" 
-                        Width="100" 
+                        Width="200" 
                         HorizontalAlignment="Center">
-                <TextBox Margin="0,0,0,5"
-                         x:Name="nameTextBox"
-                         GotFocus="TextBox_GotFocus"
-                         LostFocus="TextBox_LostFocus"
-                         Text="{Binding Name}"></TextBox>
-                <ComboBox Margin="0,0,0,5"  
-                          x:Name="comboBox"
-                          ItemsSource="{Binding ColorListEnum}" 
-                          DisplayMemberPath="ValueColorString"
-                          SelectedValuePath="ValueColorEnum" 
-                          SelectedValue="{Binding DiscColor}">
-                </ComboBox>
+                <StackPanel HorizontalAlignment="Center">
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                        <TextBox 
+                            Margin="0,0,0,0"
+                            x:Name="player1Name"
+                            GotFocus="GotFocus"
+                            LostFocus="LostFocus"
+                            Text="{Binding Name}"
+                            Width="60"
+                            Height="22"/>
+                        <ComboBox 
+                            Margin="10,0,0,0"  
+                            x:Name="comboBox"
+                            ItemsSource="{Binding ColorListEnum}" 
+                            DisplayMemberPath="ValueColorString"
+                            SelectedValuePath="ValueColorEnum" 
+                            SelectedValue="{Binding DiscColor}"
+                            Width="60"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,10,0,0" Orientation="Horizontal" >
+                        <TextBox 
+                            x:Name="player2Name"
+                            GotFocus="GotFocus"
+                            LostFocus="LostFocus"
+                            Text="{Binding OpponentName}"
+                            Width="60"
+                            Height="22"/>
+                        <StackPanel Margin="5,0,0,0" Orientation="Horizontal">
+                            <Label>AI</Label>
+                            <CheckBox IsChecked="{Binding IsAIOpponent}" 
+                                      Margin="0,7,0,0"/>
+                        </StackPanel>
+                        
+                        
+
+
+                    </StackPanel>
+                </StackPanel>
                 <Button Content="Start" 
-                        Command="{Binding ValidatePlayerCommand}"/>
+                        Command="{Binding ValidatePlayerCommand}"
+                        Width="100"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         

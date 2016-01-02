@@ -85,8 +85,8 @@ namespace Othello.Controller
                     player = new Robot(board, name, color);
                     break;
             }
-            if (this.players.Contains(player))
-                player.Name = player.Name + " 2";
+            /*if (this.players.Contains(player))
+                player.Name = player.Name + " 2";*/
             this.players.AddLast(player);
         }
 

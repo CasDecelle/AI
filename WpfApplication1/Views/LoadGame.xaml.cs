@@ -44,7 +44,7 @@ namespace WpfGUI.Views
             this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
             this.AllowUIUpdate();
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             controller.ExecuteAIMove(row, col);
             this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
@@ -52,9 +52,6 @@ namespace WpfGUI.Views
 
         public void StartGame()
         {
-            DiscColor color = DiscColor.Black;
-            if (controller.Players.First.Value.Color == DiscColor.Black) color = DiscColor.White;
-            controller.CreateRoboticPlayer("Mr. Robot", color);
             controller.PickPlayer();
             pvm = new PlayerViewModel(this.controller.CurrentPlayer);
             this.DataContext = pvm;

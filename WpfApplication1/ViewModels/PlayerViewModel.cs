@@ -14,11 +14,13 @@ namespace WpfGUI.ViewModels
 {
     public class PlayerViewModel : INotifyPropertyChanged
     {
-        private String name;
+        private string name;
         private DiscColor discColor;
         private int score;
         private List<ComboBoxDiscColor> colorListEnum = new List<ComboBoxDiscColor>();
         private ISubmitPlayer submitPlayer;
+        private string opponentName;
+        private bool isAIOpponent;
 
         public PlayerViewModel(ISubmitPlayer submitPlayer)
         {
@@ -41,7 +43,7 @@ namespace WpfGUI.ViewModels
             this.discColor = player.Color;
         }
 
-        public String Name 
+        public string Name 
         { 
             get { return this.name; }
             set 
@@ -77,6 +79,29 @@ namespace WpfGUI.ViewModels
             }
         }
 
+        public string OpponentName
+        {
+            get { return this.opponentName; }
+            set
+            {
+                if (value != this.name)
+                {
+                    this.opponentName = value;
+                    NotifyPropertyChanged("OpponentName");
+                }
+            }
+        }
+
+        public bool IsAIOpponent
+        {
+            get { return this.isAIOpponent; }
+            set
+            {
+                this.isAIOpponent = value;
+                NotifyPropertyChanged("IsAIOpponent");
+            }
+        }
+
         public List<ComboBoxDiscColor> ColorListEnum
         {
             get { return this.colorListEnum; }
@@ -85,7 +110,7 @@ namespace WpfGUI.ViewModels
                 if (value != this.colorListEnum)
                 {
                     this.colorListEnum = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged("ColorListEnum");
                 }
             }
         }
@@ -94,14 +119,19 @@ namespace WpfGUI.ViewModels
 
         public bool ValidatePlayer()
         {
-            if (this.discColor == DiscColor.None) return false;
-            if (this.name == null) return false;
-            return this.name.Length <= 10 ? !String.IsNullOrWhiteSpace(this.name) : false;
+            if (this.discColor != DiscColor.None
+                && this.name != null
+                && this.opponentName != null
+                && !String.IsNullOrWhiteSpace(this.name)
+                && !String.IsNullOrWhiteSpace(this.opponentName)
+                && this.name.Length >= 3
+                && this.opponentName.Length >= 3) return true;
+            return false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
             {
