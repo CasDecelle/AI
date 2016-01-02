@@ -101,7 +101,7 @@ namespace Othello.Controller
                 if (this.currentPlayer.GetType() == typeof(Robot))
                 {
                     Robot beepBoop = (Robot)currentPlayer;
-                    Tuple<int, int> move = beepBoop.GetMove();
+                    Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
                   /*  StateSpace stateSpace = new StateSpace(this.board, this.MAX_DEPTH, this.currentPlayer);
                     Tuple<int,int> move = stateSpace.GetBestMove();*/
                     flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);

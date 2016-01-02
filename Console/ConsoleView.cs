@@ -91,7 +91,7 @@ namespace ConsoleApplication
                 else
                 {
                     Robot r = (Robot)game.CurrentPlayer;
-                    Tuple<int, int> t = r.GetMove();
+                    Tuple<int, int> t = r.GetBestMove();
                     game.Board.ExecuteValidMove(t.Item1, t.Item2);
                 }
             }

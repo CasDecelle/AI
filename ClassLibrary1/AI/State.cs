@@ -3,18 +3,19 @@ using Othello.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Othello.AI
 {
-    public class StateSpace
+    public class State
     {
         private int maxDepth;
-        private StateSpaceNode maxNode;
+        private StateNode maxNode;
         private readonly Player maxPlayer;
-        private List<StateSpaceNode> tree;
+        private List<StateNode> tree;
 
         /*
         public HeuristicBoard Board
@@ -23,27 +24,28 @@ namespace Othello.AI
             set { this.board = value; }
         }*/
 
-        public StateSpace(Board b, int d, Player p)
+        public State(Board b, int d, Player p, Tuple<int, int> lastMove)
         {
             this.maxDepth = d;
             this.maxPlayer = p;
-            this.BuildStateSpace(b);
-            this.tree = new List<StateSpaceNode>();
+            this.BuildState(b);
+            this.maxNode.Move = lastMove;
+            this.tree = new List<StateNode>();
             //this.maxNode.CalculateHeuristic();
         }
 
-        public StateSpace(StateSpace previousState)
+        public State(State previousState)
         {
             //board = previousState.board;
         }
 
-        private void BuildStateSpace(Board b)
+        private void BuildState(Board b)
         {
-            this.maxNode = new StateSpaceNode(new AIBoard(b, this.maxPlayer, NodeType.MAX_NODE, this.maxDepth), this.maxPlayer, NodeType.MAX_NODE);
+            this.maxNode = new StateNode(new AIBoard(b, this.maxPlayer, NodeType.MAX_NODE, this.maxDepth), this.maxPlayer, NodeType.MAX_NODE);
             this.AddChildren(this.maxNode, this.maxDepth, this.maxPlayer, this.maxPlayer.Color);
         }
 
-        private void AddChildren(StateSpaceNode parentNode, int depth, Player player, DiscColor color)
+        private void AddChildren(StateNode parentNode, int depth, Player player, DiscColor color)
         {
             if (depth == 0) return;
 
@@ -63,7 +65,7 @@ namespace Othello.AI
                     b.MakeMove(move.Item1, move.Item2, color, flankingDirections);
                     
                     //Construct StateSpaceNode
-                    StateSpaceNode node = new StateSpaceNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move, color);
+                    StateNode node = new StateNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move, color);
                     //node.HeuristicValue = b.GetHeuristicValue(b, color);
                     parentNode.AddChild(node);
                    // tree.Add(node);
@@ -80,7 +82,7 @@ namespace Othello.AI
             }
         }
 
-        public StateSpaceNode GetBestMove()
+        public StateNode GetBestMove()
         {
           /*  Tuple<int, int> move = null;
             // neemt enkel children van root voorlopig, TODO hele boom doorzoeken
@@ -104,7 +106,13 @@ namespace Othello.AI
                         break;
                 }
             }*/
-            return (StateSpaceNode) maxNode.Children.First(mn => ((StateSpaceNode)mn).HeuristicValue == maxNode.Children.Max(node => ((StateSpaceNode)node).HeuristicValue));
+            return (StateNode) maxNode.Children.First(mn => ((StateNode)mn).HeuristicValue == maxNode.Children.Max(node => ((StateNode)node).HeuristicValue));
+        }
+
+        public void PrintTree()
+        {
+            File.WriteAllText("Tree.txt", "");
+            Node.Print(this.maxNode, 0);
         }
     }
 }

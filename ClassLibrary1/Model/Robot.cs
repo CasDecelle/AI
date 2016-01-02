@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,14 @@ namespace Othello.Model
             this.board = board;
         }
 
-        public Tuple<int, int> GetMove()
+        public Tuple<int, int> GetBestMove(Tuple<int, int> lastMove)
         {
-            StateSpace stateSpace = new StateSpace(board, 3, this);
-            StateSpaceNode bestNode = stateSpace.GetBestMove();
+            State state = new State(board, 3, this, lastMove);
+            state.PrintTree();
+            StateNode bestNode = state.GetBestMove();
             return bestNode.Move;
         }
+
             /* Tuple<int, int> move = null;
              double heuristicValue = 0;
              // neemt enkel children van root voorlopig, TODO hele boom doorzoeken

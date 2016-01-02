@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,23 @@ namespace Othello.AI.Util
                 if (--i == 0)
                     return n;
             return null;
+        }
+
+        public static void Print(Node node, int depth)
+        {
+            string tabs = "";
+            for (int i = 0; i < depth; i++)
+            {
+                tabs += "\t";
+            }
+
+            File.AppendAllText("Tree.txt", tabs + node.ToString());
+
+            if (node.Children == null || node.Children.Count == 0) return;
+            foreach (var child in node.Children)
+            {
+                Print(child, depth + 1);
+            }
         }
     }
 }
