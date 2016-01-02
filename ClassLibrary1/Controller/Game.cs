@@ -85,8 +85,6 @@ namespace Othello.Controller
                     player = new Robot(board, name, color);
                     break;
             }
-            /*if (this.players.Contains(player))
-                player.Name = player.Name + " 2";*/
             this.players.AddLast(player);
         }
 
@@ -97,38 +95,25 @@ namespace Othello.Controller
             {
                 this.board.MakeMove(row, col, currentPlayer.Color, flankingDirections);
                 this.PickPlayer();
-                /*
-                // AI move
-                if (this.currentPlayer.GetType() == typeof(Robot))
-                {
-                    Robot beepBoop = (Robot)currentPlayer;
-                    Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
-                    //StateSpace stateSpace = new StateSpace(this.board, this.MAX_DEPTH, this.currentPlayer);
-                    //Tuple<int,int> move = stateSpace.GetBestMove();
-                    flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
-                    //Make AI wait a second so move is easier to see
-                    //TODO listener maken om gui te updaten en hier notify
-                    //Thread.Sleep(1000);
-                    this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
-                    this.PickPlayer();
-                }*/
             }
             this.CalculateScore();
             return flankingDirections != null;
         }
 
-        public void ExecuteAIMove(int row, int col)
+        public bool ExecuteAIMove(int row, int col)
         {
-            ArrayList flankingDirections = new ArrayList();
             if (this.currentPlayer.GetType() == typeof(Robot))
             {
+                Thread.Sleep(1500);
                 Robot beepBoop = (Robot)currentPlayer;
                 Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
-                flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
+                ArrayList flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
                 this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
                 this.PickPlayer();
                 this.CalculateScore();
+                return true;
             }
+            return false;
         }
 
         private void CalculateScore()

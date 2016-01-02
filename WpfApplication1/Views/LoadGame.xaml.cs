@@ -44,9 +44,8 @@ namespace WpfGUI.Views
             this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
             this.AllowUIUpdate();
-            Thread.Sleep(1500);
-            controller.ExecuteAIMove(row, col);
-            this.SwitchPlayer(this.controller.CurrentPlayer);
+            if (controller.ExecuteAIMove(row, col))
+                this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
         }
 
