@@ -59,7 +59,7 @@ namespace Othello.Controller
 
         public void PickPlayer()
         {
-            this.currentPlayer = players.ElementAt(0);
+            this.CurrentPlayer = players.ElementAt(0);
             this.players.RemoveFirst();
             this.players.AddLast(currentPlayer);
         }
@@ -97,26 +97,41 @@ namespace Othello.Controller
             {
                 this.board.MakeMove(row, col, currentPlayer.Color, flankingDirections);
                 this.PickPlayer();
+                /*
                 // AI move
                 if (this.currentPlayer.GetType() == typeof(Robot))
                 {
                     Robot beepBoop = (Robot)currentPlayer;
                     Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
-                  /*  StateSpace stateSpace = new StateSpace(this.board, this.MAX_DEPTH, this.currentPlayer);
-                    Tuple<int,int> move = stateSpace.GetBestMove();*/
+                    //StateSpace stateSpace = new StateSpace(this.board, this.MAX_DEPTH, this.currentPlayer);
+                    //Tuple<int,int> move = stateSpace.GetBestMove();
                     flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
-                    // Make AI wait a second so move is easier to see
+                    //Make AI wait a second so move is easier to see
                     //TODO listener maken om gui te updaten en hier notify
                     //Thread.Sleep(1000);
                     this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
                     this.PickPlayer();
-                }
+                }*/
             }
-            this.UpdateScore();
+            this.CalculateScore();
             return flankingDirections != null;
         }
 
-        private void UpdateScore()
+        public void ExecuteAIMove(int row, int col)
+        {
+            ArrayList flankingDirections = new ArrayList();
+            if (this.currentPlayer.GetType() == typeof(Robot))
+            {
+                Robot beepBoop = (Robot)currentPlayer;
+                Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
+                flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
+                this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
+                this.PickPlayer();
+                this.CalculateScore();
+            }
+        }
+
+        private void CalculateScore()
         {
             foreach (Player p in this.players)
             {

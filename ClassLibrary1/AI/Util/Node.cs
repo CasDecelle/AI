@@ -46,7 +46,7 @@ namespace Othello.AI.Util
             return null;
         }
 
-        public static void Print(Node node, int depth)
+        public static string Print(Node node, string result, int depth)
         {
             string tabs = "";
             for (int i = 0; i < depth; i++)
@@ -54,13 +54,14 @@ namespace Othello.AI.Util
                 tabs += "\t";
             }
 
-            File.AppendAllText("Tree.txt", tabs + node.ToString());
+            result += tabs + node.ToString();
 
-            if (node.Children == null || node.Children.Count == 0) return;
+            if (node.Children == null || node.Children.Count == 0) return result;
             foreach (var child in node.Children)
             {
-                Print(child, depth + 1);
+                 result = Print(child, result, depth + 1);
             }
+            return result;
         }
     }
 }

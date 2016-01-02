@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
+using WpfGUI.ViewModels;
+using System.Windows.Threading;
 
 namespace WpfGUI.Views
 {
@@ -24,6 +26,7 @@ namespace WpfGUI.Views
     public partial class LoadGame : Page
     {
         private Game controller;
+        private PlayerViewModel pvm;
 
         public LoadGame(Game controller)
         {
@@ -38,9 +41,13 @@ namespace WpfGUI.Views
             int row = Grid.GetRow(disc);
             int col = Grid.GetColumn(disc);
             controller.ExecuteValidMove(row, col);
+            this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
-            UpdatePlayer();
-            //Thread.Sleep(10000);
+            this.AllowUIUpdate();
+            Thread.Sleep(1000);
+            controller.ExecuteAIMove(row, col);
+            this.SwitchPlayer(this.controller.CurrentPlayer);
+            UpdateBoard();
         }
 
         public void StartGame()
@@ -49,8 +56,9 @@ namespace WpfGUI.Views
             if (controller.Players.First.Value.Color == DiscColor.Black) color = DiscColor.White;
             controller.CreateRoboticPlayer("Mr. Robot", color);
             controller.PickPlayer();
+            pvm = new PlayerViewModel(this.controller.CurrentPlayer);
+            this.DataContext = pvm;
             UpdateBoard();
-            UpdatePlayer();
         }
 
         public void UpdateBoard()
@@ -81,18 +89,27 @@ namespace WpfGUI.Views
             }
         }
 
-        public void UpdatePlayer()
-        {
-            playerName.Content = controller.CurrentPlayer.Name;
-            playerColor.Content = controller.CurrentPlayer.Color.ToString();
-            playerScore.Content = controller.CurrentPlayer.Score;
-        }
-
         public void MainMenu(object sender, EventArgs e)
         {
             Switcher.pageSwitcher.Navigate(new MainMenu());
         }
 
-        
+        private void SwitchPlayer(Player player)
+        {
+            pvm.Name = player.Name;
+            pvm.DiscColor = player.Color;
+            pvm.Score = player.Score;
+        }
+
+        private void AllowUIUpdate()
+        {
+            DispatcherFrame frame = new DispatcherFrame();
+            Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Render, new DispatcherOperationCallback(delegate(object parameter)
+            {
+                frame.Continue = false;
+                return null;
+            }), null);
+            Dispatcher.PushFrame(frame);
+        }
     }
 }

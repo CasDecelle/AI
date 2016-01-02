@@ -52,34 +52,38 @@ namespace Othello.AI
             ArrayList validMoves = new ArrayList();
             validMoves = parentNode.Board.GetValidMovesForPlayer(color);
 
-            foreach (Tuple<int, int> move in validMoves)
+            if (validMoves != null)
             {
-                if (validMoves != null && move != null)
+                foreach (Tuple<int, int> move in validMoves)
                 {
-                    //Make new AIBoard based on the original board
-                    AIBoard b = new AIBoard(parentNode.Board, this.maxPlayer, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), depth);
-                    
-                    //Execute Move
-                    ArrayList flankingDirections = new ArrayList();
-                    flankingDirections = b.IsMoveValid(move.Item1, move.Item2, color);
-                    b.MakeMove(move.Item1, move.Item2, color, flankingDirections);
-                    
-                    //Construct StateSpaceNode
-                    StateNode node = new StateNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move, color);
-                    //node.HeuristicValue = b.GetHeuristicValue(b, color);
-                    parentNode.AddChild(node);
-                   // tree.Add(node);
+                    if (move != null)
+                    {
+                        //Make new AIBoard based on the original board
+                        AIBoard b = new AIBoard(parentNode.Board, this.maxPlayer, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), depth);
 
-                    //New DiscColor
-                    Disc invertedDisc = new Disc(color);
-                    invertedDisc.InvertDisc();
+                        //Execute Move
+                        ArrayList flankingDirections = new ArrayList();
+                        flankingDirections = b.IsMoveValid(move.Item1, move.Item2, color);
+                        b.MakeMove(move.Item1, move.Item2, color, flankingDirections);
 
-                    //Recursive call for new state
-                    this.AddChildren(node, depth - 1, player, invertedDisc.Color);
+                        //Construct StateSpaceNode
+                        StateNode node = new StateNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move, color);
+                        //node.HeuristicValue = b.GetHeuristicValue(b, color);
+                        parentNode.AddChild(node);
+                        // tree.Add(node);
 
-                    node.CalculateHeuristicValue();
+                        //New DiscColor
+                        Disc invertedDisc = new Disc(color);
+                        invertedDisc.InvertDisc();
+
+                        //Recursive call for new state
+                        this.AddChildren(node, depth - 1, player, invertedDisc.Color);
+
+                        node.CalculateHeuristicValue();
+                    }
                 }
             }
+            
         }
 
         public StateNode GetBestMove()
@@ -111,8 +115,8 @@ namespace Othello.AI
 
         public void PrintTree()
         {
-            File.WriteAllText("Tree.txt", "");
-            Node.Print(this.maxNode, 0);
+            string s = Node.Print(this.maxNode, "", 0);
+            File.WriteAllText("Tree.txt", s);
         }
     }
 }

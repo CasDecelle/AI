@@ -3,10 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:vm="clr-namespace:WpfGUI.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="LoadGame">
 
+    <Page.DataContext>
+        <vm:PlayerViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1"></RowDefinition>
@@ -174,15 +179,15 @@
             <StackPanel Canvas.Top="0" Canvas.Left="0">
                 <StackPanel Orientation="Horizontal">
                     <Label>Your turn</Label>
-                    <Label x:Name="playerName" FontWeight="ExtraBold"></Label>
+                    <Label FontWeight="ExtraBold" Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label>Color:</Label>
-                    <Label x:Name="playerColor" FontWeight="ExtraBold"></Label>
+                    <Label x:Name="playerColor" FontWeight="ExtraBold" Content="{Binding DiscColor, UpdateSourceTrigger=PropertyChanged}"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label>Score:</Label>
-                    <Label x:Name="playerScore" FontWeight="ExtraBold"></Label>
+                    <Label x:Name="playerScore" FontWeight="ExtraBold" Content="{Binding Score, Mode=TwoWay}"></Label>
                 </StackPanel>
             </StackPanel>
             <Button Width="150" Click="MainMenu" Canvas.Bottom="0" Canvas.Left="0">Exit Game</Button>
