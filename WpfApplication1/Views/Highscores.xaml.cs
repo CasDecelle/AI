@@ -33,7 +33,14 @@ namespace WpfGUI.Views
         public Highscores()
         {
             HighscoresReadWriteHandler highscoreHandler = new HighscoresReadWriteHandler("../../../ClassLibrary1/Resources/Highscores.csv");
-            highscoreList = highscoreHandler.Read();
+            List<Player> highscores = highscoreHandler.Read().OrderByDescending(o => o.Score).ToList();
+            highscoreList = new List<Player>();
+            int count = highscores.Count();
+            if (count > 10) count = 10;
+            for (int i = 0; i < count; i++)
+            {
+                highscoreList.Add(highscores.ElementAt(i));
+            }
             InitializeComponent();
             highscoreGrid.ItemsSource = highscoreList;
         }

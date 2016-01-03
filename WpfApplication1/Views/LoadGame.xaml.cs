@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using WpfGUI.ViewModels;
 using System.Windows.Threading;
+using Othello.Utility;
 
 namespace WpfGUI.Views
 {
@@ -59,11 +60,12 @@ namespace WpfGUI.Views
 
         public void FinishGame()
         {
-            pvm = new PlayerViewModel(controller.GetWinner());
+            Player winner = this.controller.GetWinner();
+            pvm = new PlayerViewModel(winner);
             this.DataContext = pvm;
             this.gamePanel.Visibility = System.Windows.Visibility.Collapsed;
             this.finishPanel.Visibility = System.Windows.Visibility.Visible;
-            
+            this.WriteHighscore(winner);
         }
 
         public void UpdateBoard()
@@ -117,6 +119,12 @@ namespace WpfGUI.Views
                 return null;
             }), null);
             Dispatcher.PushFrame(frame);
+        }
+
+        private void WriteHighscore(Player player)
+        {
+            HighscoresReadWriteHandler writer = new HighscoresReadWriteHandler("../../../ClassLibrary1/Resources/Highscores.csv");
+            writer.Write(player);
         }
     }
 }

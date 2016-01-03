@@ -25,13 +25,11 @@ namespace Othello.Utility
         public void Write(Player player)
         {
             List<Player> players = this.Read();
-            players.Add(player);
-            StringBuilder highscores = new StringBuilder();
             foreach (Player p in players)
             {
-                highscores.Append(p.ToString());
+                if (player.Name.Equals(p.Name) && player.Score == p.Score) return;
             }
-            File.WriteAllText(filePath, highscores.ToString());
+            File.AppendAllText(filePath, player.ToString());
         }
 
         public List<Player> Read()

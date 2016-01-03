@@ -38,11 +38,6 @@ namespace Othello.Model
             set { this.score = value; }
         }
 
-        public void AddHighscore()
-        {
-
-        }
-
         public enum Type
         {
             Human, Robot
