@@ -12,7 +12,8 @@ namespace Othello.AI
 
         public double CalculateHeuristicValue(AIBoard b, DiscColor color)
         {
-            return b.CountDiscs(color);
+            Disc invertedDisc = new Disc(color); invertedDisc.InvertDisc();
+            return b.CountDiscs(color) - b.CountDiscs(invertedDisc.Color);
         }
     }
 }

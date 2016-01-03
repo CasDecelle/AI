@@ -59,7 +59,6 @@
     <Compile Include="Utility\HighscoresReadWriteHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Resources\Highscores.csv" />
   </ItemGroup>
   <ItemGroup>
