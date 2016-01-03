@@ -6,21 +6,35 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="Scores">
-    
-    <StackPanel>
-        <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Highscores</Label>
-        <DataGrid IsHitTestVisible="False" 
-                  x:Name="highscoreGrid"
-                  IsReadOnly="True" 
-                  GridLinesVisibility="None"
-                  AutoGenerateColumns="False"
-                  HeadersVisibility="All"
-                  Width="100"> 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Score" Binding="{Binding Score}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Margin="0,5,0,0" Width="100" Click="MainMenu">Main Menu</Button>
-    </StackPanel>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Highscores</Label>
+            <DataGrid IsHitTestVisible="False" 
+                      x:Name="highscoreGrid"
+                      IsReadOnly="True" 
+                      GridLinesVisibility="None"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="All"
+                      Width="100"
+                      Margin="0,10,0,10"> 
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Score" Binding="{Binding Score}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Margin="0,5,0,0" Width="100" Click="MainMenu">Main Menu</Button>
+        </StackPanel>
+    </Grid>
 </Page>

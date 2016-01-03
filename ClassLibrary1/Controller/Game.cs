@@ -102,7 +102,7 @@ namespace Othello.Controller
 
         public bool ExecuteAIMove(int row, int col)
         {
-            if (this.currentPlayer.GetType() == typeof(Robot))
+            if (this.currentPlayer.GetType() == typeof(Robot) && this.board.ValidMoveRemaining(this.currentPlayer.Color))
             {
                 Thread.Sleep(1500);
                 Robot beepBoop = (Robot)currentPlayer;

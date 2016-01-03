@@ -47,7 +47,7 @@
                             x:Name="player1Name"
                             GotFocus="GotFocus"
                             LostFocus="LostFocus"
-                            Text="{Binding Name}"
+                            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                             Width="60"
                             Height="22"/>
                         <ComboBox 
@@ -64,7 +64,7 @@
                             x:Name="player2Name"
                             GotFocus="GotFocus"
                             LostFocus="LostFocus"
-                            Text="{Binding OpponentName}"
+                            Text="{Binding OpponentName, UpdateSourceTrigger=PropertyChanged}"
                             Width="60"
                             Height="22"/>
                         <StackPanel Margin="5,0,0,0" Orientation="Horizontal">
