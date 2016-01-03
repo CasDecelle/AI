@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Othello.Utility
 {
-    public class HighscoresHandler
+    public class HighscoresReadWriteHandler
     {
         private string separator;
         private string file;
         private string filePath;
 
-        public HighscoresHandler(string filePath)
+        public HighscoresReadWriteHandler(string filePath)
         {
             this.separator = ";";
             this.filePath = filePath;

@@ -157,7 +157,7 @@ namespace Othello.Model
 
         public bool IsGameFinished()
         {
-            if ((!ValidMoveRemaining(DiscColor.White)) && (!ValidMoveRemaining(DiscColor.Black)))
+            if ((!ValidMoveRemaining(DiscColor.White)) || (!ValidMoveRemaining(DiscColor.Black)))
                 return true;
             return false;
         }

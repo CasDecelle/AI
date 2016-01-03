@@ -116,6 +116,11 @@ namespace Othello.Controller
             return false;
         }
 
+        public Player GetWinner()
+        {
+            return players.First.Value.Score > players.Last.Value.Score ? players.First.Value : players.Last.Value;
+        }
+
         private void CalculateScore()
         {
             foreach (Player p in this.players)

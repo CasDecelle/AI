@@ -176,7 +176,7 @@
             <Ellipse x:Name="Disc7_7" Margin="2, 2, 2, 2" Grid.Row="7" Grid.Column="7" Fill="Green" MouseUp="ClickOnDisc" />
         </Grid>
         <Canvas Grid.Row="1" Grid.Column="2">
-            <StackPanel Canvas.Top="0" Canvas.Left="0">
+            <StackPanel x:Name="gamePanel" Canvas.Top="0" Canvas.Left="0" Visibility="Visible">
                 <StackPanel Orientation="Horizontal">
                     <Label>Your turn</Label>
                     <Label FontWeight="ExtraBold" Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></Label>
@@ -188,6 +188,17 @@
                 <StackPanel Orientation="Horizontal">
                     <Label>Score:</Label>
                     <Label x:Name="playerScore" FontWeight="ExtraBold" Content="{Binding Score, Mode=TwoWay}"></Label>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="finishPanel" Visibility="Collapsed">
+                <Label FontWeight="ExtraBold">Game Over</Label>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding Name}"/>
+                    <Label>won the game</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>with a score of</Label>
+                    <Label Content="{Binding Score}"/>
                 </StackPanel>
             </StackPanel>
             <Button Width="150" Click="MainMenu" Canvas.Bottom="0" Canvas.Left="0">Exit Game</Button>

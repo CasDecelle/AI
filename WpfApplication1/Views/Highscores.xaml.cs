@@ -22,12 +22,20 @@ namespace WpfGUI.Views
     /// </summary>
     public partial class Highscores : Page
     {
+        List<Player> highscoreList;
+
+        /*List<Player> HighscoreList
+        {
+            get { return this.highscoreList; }
+            set { this.highscoreList = value; }
+        }*/
+
         public Highscores()
         {
-            HighscoresHandler highscoreHandler = new HighscoresHandler("../../../ClassLibrary1/Resources/Highscores.csv");
-            DataContext = highscoreHandler.Read();
+            HighscoresReadWriteHandler highscoreHandler = new HighscoresReadWriteHandler("../../../ClassLibrary1/Resources/Highscores.csv");
+            highscoreList = highscoreHandler.Read();
             InitializeComponent();
-
+            highscoreGrid.ItemsSource = highscoreList;
         }
 
         public void MainMenu(object sender, EventArgs e)

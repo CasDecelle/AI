@@ -59,7 +59,7 @@
     <Compile Include="Model\Robot.cs" />
     <Compile Include="Model\Square.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\HighscoresHandler.cs" />
+    <Compile Include="Utility\HighscoresReadWriteHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

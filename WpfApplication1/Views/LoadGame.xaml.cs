@@ -57,8 +57,19 @@ namespace WpfGUI.Views
             UpdateBoard();
         }
 
+        public void FinishGame()
+        {
+            pvm = new PlayerViewModel(controller.GetWinner());
+            this.DataContext = pvm;
+            this.gamePanel.Visibility = System.Windows.Visibility.Collapsed;
+            this.finishPanel.Visibility = System.Windows.Visibility.Visible;
+            
+        }
+
         public void UpdateBoard()
         {
+            if (controller.Board.IsGameFinished()) 
+                this.FinishGame();
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)

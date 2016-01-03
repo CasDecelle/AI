@@ -9,9 +9,17 @@
     
     <StackPanel>
         <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Highscores</Label>
-        <DataGrid IsHitTestVisible="False" IsReadOnly="True" GridLinesVisibility="None" HeadersVisibility="All">
-            <DataGridTextColumn Header="Name"></DataGridTextColumn>
-            <DataGridTextColumn Header="Score"></DataGridTextColumn>
+        <DataGrid IsHitTestVisible="False" 
+                  x:Name="highscoreGrid"
+                  IsReadOnly="True" 
+                  GridLinesVisibility="None"
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="All"
+                  Width="100"> 
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Score" Binding="{Binding Score}"></DataGridTextColumn>
+            </DataGrid.Columns>
         </DataGrid>
         <Button Margin="0,5,0,0" Width="100" Click="MainMenu">Main Menu</Button>
     </StackPanel>
