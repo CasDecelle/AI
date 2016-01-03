@@ -17,13 +17,6 @@ namespace Othello.AI
         private readonly Player maxPlayer;
         private List<StateNode> tree;
 
-        /*
-        public HeuristicBoard Board
-        {
-            get { return this.board; }
-            set { this.board = value; }
-        }*/
-
         public State(Board b, int d, Player p, Tuple<int, int> lastMove)
         {
             this.maxDepth = d;
@@ -68,9 +61,7 @@ namespace Othello.AI
 
                         //Construct StateSpaceNode
                         StateNode node = new StateNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move, color);
-                        //node.HeuristicValue = b.GetHeuristicValue(b, color);
                         parentNode.AddChild(node);
-                        // tree.Add(node);
 
                         //New DiscColor
                         Disc invertedDisc = new Disc(color);
@@ -88,35 +79,13 @@ namespace Othello.AI
 
         public StateNode GetBestMove()
         {
-          /*  Tuple<int, int> move = null;
-            // neemt enkel children van root voorlopig, TODO hele boom doorzoeken
-            List<StateSpaceNode> leafs = tree.Where(n => n.IsLeaf).ToList();
-            foreach(StateSpaceNode l in leafs) {
-                l.HeuristicValue = l.Board.GetHeuristicValue(l.CurrentColor);
-            }
-            List<StateSpaceNode> nodesToProcess = tree.Where(n => n.Children.Intersect(leafs).Any()).ToList();
-           
-
-            foreach (StateSpaceNode n in nodesToProcess)
-            {
-                switch (n.NodeType)
-                {
-                    case NodeType.MAX_NODE:
-                        n.HeuristicValue = nodesToProcess.Max(np => np.HeuristicValue);
-                        no
-                        break;
-                    case NodeType.MIN_NODE:
-                        n.HeuristicValue = nodesToProcess.Min(np => np.HeuristicValue);
-                        break;
-                }
-            }*/
             return (StateNode) maxNode.Children.First(mn => ((StateNode)mn).HeuristicValue == maxNode.Children.Max(node => ((StateNode)node).HeuristicValue));
         }
 
         public void PrintTree()
         {
             string s = Node.Print(this.maxNode, "", 0);
-            File.WriteAllText("Tree.txt", s);
+            File.WriteAllText("../../../ClassLibrary1/Resources/Tree.txt", s);
         }
     }
 }

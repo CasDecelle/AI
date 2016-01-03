@@ -76,7 +76,6 @@ namespace Othello.AI
                         this.HeuristicValue = this.Children.Min(node => ((StateNode)node).HeuristicValue);
                         break;
                 }
-            //return this.board.Heuristic.CalculateHeuristicValue(this.board, this.maxPlayer.Color);
         }
 
         public override string ToString()

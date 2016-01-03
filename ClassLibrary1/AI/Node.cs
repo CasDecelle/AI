@@ -23,7 +23,6 @@ namespace Othello.AI.Util
         {
             get { return this.children;  } 
         }
-       // public bool IsLeaf { get; set; }
 
         public Node()
         {

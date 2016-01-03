@@ -126,8 +126,7 @@ namespace WpfGUI.ViewModels
                 && !String.IsNullOrWhiteSpace(this.opponentName)
                 && this.name.Length >= 3
                 && this.opponentName.Length >= 3
-                && !this.name.Equals("Player 1")
-                && !this.opponentName.Equals("Player 2")) 
+                && !this.name.Equals(this.opponentName)) 
                 return true;
             return false;
         }

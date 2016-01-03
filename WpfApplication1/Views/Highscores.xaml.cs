@@ -18,17 +18,11 @@ using System.Windows.Shapes;
 namespace WpfGUI.Views
 {
     /// <summary>
-    /// Interaction logic for Scores.xaml
+    /// Interaction logic for Highscores.xaml
     /// </summary>
     public partial class Highscores : Page
     {
         List<Player> highscoreList;
-
-        /*List<Player> HighscoreList
-        {
-            get { return this.highscoreList; }
-            set { this.highscoreList = value; }
-        }*/
 
         public Highscores()
         {

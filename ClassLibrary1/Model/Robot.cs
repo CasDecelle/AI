@@ -31,34 +31,6 @@ namespace Othello.Model
             state.PrintTree();
             StateNode bestNode = state.GetBestMove();
             return bestNode.Move;
-        }
-
-            /* Tuple<int, int> move = null;
-             double heuristicValue = 0;
-             // neemt enkel children van root voorlopig, TODO hele boom doorzoeken
-             foreach (StateSpaceNode n in this.maxNode.Children)
-             {
-                 if (n.CalculateHeuristic() > heuristicValue)
-                 {
-                     heuristicValue = n.CalculateHeuristic();
-                     move = n.Move;
-                 }
-             }
-             return move;
-             * /
-
-         /*public Tuple<int, int> GetMove() {
-      
-             ArrayList ar = board.GetValidMovesForPlayer(this.Color);
-
-             //Zeer domme robot
-             Tuple<int, int> returnTuple = (Tuple<int, int>)ar[1];
-            
-          
-
-             return returnTuple;
-         }*/
-
-        
+        }        
     }
 }
