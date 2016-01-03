@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Othello", "ClassLibrary1\Othello.csproj", "{86A1D3F7-F1C1-45A6-A0F4-7201A74958B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Othello", "Othello\Othello.csproj", "{86A1D3F7-F1C1-45A6-A0F4-7201A74958B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{9C7E451A-A809-4A21-82A3-DD0CF14B5317}"
 EndProject

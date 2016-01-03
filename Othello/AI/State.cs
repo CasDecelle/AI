@@ -85,7 +85,7 @@ namespace Othello.AI
         public void PrintTree()
         {
             string s = Node.Print(this.maxNode, "", 0);
-            File.WriteAllText("../../../ClassLibrary1/Resources/Tree.txt", s);
+            File.WriteAllText("../../../Othello/Resources/Tree.txt", s);
         }
     }
 }

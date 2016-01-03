@@ -128,7 +128,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Othello.csproj">
+    <ProjectReference Include="..\Othello\Othello.csproj">
       <Project>{86a1d3f7-f1c1-45a6-a0f4-7201a74958b0}</Project>
       <Name>Othello</Name>
     </ProjectReference>

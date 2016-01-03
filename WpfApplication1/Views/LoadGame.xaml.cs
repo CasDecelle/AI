@@ -123,7 +123,7 @@ namespace WpfGUI.Views
 
         private void WriteHighscore(Player player)
         {
-            HighscoresReadWriteHandler writer = new HighscoresReadWriteHandler("../../../ClassLibrary1/Resources/Highscores.csv");
+            HighscoresReadWriteHandler writer = new HighscoresReadWriteHandler("../../../Othello/Resources/Highscores.csv");
             writer.Write(player);
         }
     }

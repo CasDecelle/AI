@@ -26,7 +26,7 @@ namespace WpfGUI.Views
 
         public Highscores()
         {
-            HighscoresReadWriteHandler highscoreHandler = new HighscoresReadWriteHandler("../../../ClassLibrary1/Resources/Highscores.csv");
+            HighscoresReadWriteHandler highscoreHandler = new HighscoresReadWriteHandler("../../../Othello/Resources/Highscores.csv");
             List<Player> highscores = highscoreHandler.Read().OrderByDescending(o => o.Score).ToList();
             highscoreList = new List<Player>();
             int count = highscores.Count();
