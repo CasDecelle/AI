@@ -82,17 +82,14 @@ namespace Othello.AI
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Type: ");
+            sb.Append("| ");
             sb.Append(this.type.ToString());
-            sb.Append(" Color: ");
-            sb.Append(this.currentColor.ToString());
-            if (this.move != null)
-            {
-                sb.Append(" Move: ");
-                sb.Append(this.move.Item1);
-                sb.Append(", ");
-                sb.Append(this.move.Item2);
-            }
+            sb.Append(" | Move: ");
+            sb.Append(this.move.Item1);
+            sb.Append(", ");
+            sb.Append(this.move.Item2);
+            sb.Append(" | Hv: ");
+            sb.Append(this.HeuristicValue);
             sb.Append("\n");
             return sb.ToString();
         }
