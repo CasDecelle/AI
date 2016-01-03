@@ -84,11 +84,11 @@ namespace Othello.AI
             StringBuilder sb = new StringBuilder();
             sb.Append("| ");
             sb.Append(this.type.ToString());
-            sb.Append(" | Move: ");
+            sb.Append(" | MOVE: ");
             sb.Append(this.move.Item1);
             sb.Append(", ");
             sb.Append(this.move.Item2);
-            sb.Append(" | Hv: ");
+            sb.Append(" | HV: ");
             sb.Append(this.HeuristicValue);
             sb.Append("\n");
             return sb.ToString();
