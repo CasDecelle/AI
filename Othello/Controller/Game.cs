@@ -91,7 +91,7 @@ namespace Othello.Controller
         public bool ExecuteValidMove(int row, int col)
         {
             ArrayList flankingDirections = this.board.IsMoveValid(row, col, currentPlayer.Color);
-            if (flankingDirections != null)
+            if (flankingDirections != null && !this.board.IsGameFinished())
             {
                 this.board.MakeMove(row, col, currentPlayer.Color, flankingDirections);
                 this.PickPlayer();
@@ -102,7 +102,9 @@ namespace Othello.Controller
 
         public bool ExecuteAIMove(int row, int col)
         {
-            if (this.currentPlayer.GetType() == typeof(Robot) && this.board.ValidMoveRemaining(this.currentPlayer.Color))
+            if (this.currentPlayer.GetType() == typeof(Robot) 
+                && this.board.ValidMoveRemaining(this.currentPlayer.Color)
+                && !this.board.IsGameFinished())
             {
                 Thread.Sleep(1500);
                 Robot beepBoop = (Robot)currentPlayer;

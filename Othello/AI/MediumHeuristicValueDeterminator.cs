@@ -49,6 +49,17 @@ namespace Othello.AI
             // Assign weights
             heuristicValue = (10 * discs) + (78.922 * mobility);
 
+            // Winning move
+            if (b.GetValidMovesForPlayer(color) != null && b.GetValidMovesForPlayer(color).Count == 0)
+            {
+                heuristicValue = Double.NegativeInfinity;
+            }
+            
+            if (b.GetValidMovesForPlayer(opponentColor) != null && b.GetValidMovesForPlayer(opponentColor).Count == 0)
+            {
+                heuristicValue = Double.PositiveInfinity;
+            }
+
             return heuristicValue;
         }
     }

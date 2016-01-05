@@ -32,15 +32,18 @@ namespace Othello.AI
 
             // Mobility
             double mobility = 0;
-            int player_moves = b.GetValidMovesForPlayer(color).Count;
-            int opponent_moves = b.GetValidMovesForPlayer(opponentColor).Count;
-            if (player_moves > opponent_moves)
+            if (b.GetValidMovesForPlayer(color) != null && b.GetValidMovesForPlayer(opponentColor) != null)
             {
-                mobility = (100 * player_moves) / (player_moves + opponent_moves);
-            }
-            if (player_moves < opponent_moves)
-            {
-                mobility = -(100 * opponent_moves) / (player_moves + opponent_moves);
+                int player_moves = b.GetValidMovesForPlayer(color).Count;
+                int opponent_moves = b.GetValidMovesForPlayer(opponentColor).Count;
+                if (player_moves > opponent_moves)
+                {
+                    mobility = (100 * player_moves) / (player_moves + opponent_moves);
+                }
+                if (player_moves < opponent_moves)
+                {
+                    mobility = -(100 * opponent_moves) / (player_moves + opponent_moves);
+                }
             }
 
             // Corner occupancy
@@ -54,6 +57,17 @@ namespace Othello.AI
             
             // Assign weights
             heuristicValue = (10 * discs) + (78.922 * mobility) + (801.724 * corners) + (382.026 * closeness) + (300 * edges);
+
+            // Winning move
+            if (b.GetValidMovesForPlayer(color) != null && b.GetValidMovesForPlayer(color).Count == 0)
+            {
+                heuristicValue = Double.NegativeInfinity;
+            }
+
+            if (b.GetValidMovesForPlayer(opponentColor) != null && b.GetValidMovesForPlayer(opponentColor).Count == 0)
+            {
+                heuristicValue = Double.PositiveInfinity;
+            }
 
             return heuristicValue;
         }

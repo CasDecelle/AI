@@ -17,6 +17,7 @@ namespace Othello.AI
             opponentDisc.InvertDisc();
             DiscColor opponentColor = opponentDisc.Color;
 
+            // Disc count
             int player_discs = b.CountDiscs(color);
             int opponent_discs = b.CountDiscs(opponentColor);
             if (player_discs > opponent_discs)
@@ -26,6 +27,17 @@ namespace Othello.AI
             if (player_discs < opponent_discs)
             {
                 heuristicValue = -(100 * opponent_discs) / (player_discs + opponent_discs);
+            }
+
+            // Winning move
+            if (b.GetValidMovesForPlayer(color) != null && b.GetValidMovesForPlayer(color).Count == 0)
+            {
+                heuristicValue = Double.NegativeInfinity;
+            }
+
+            if (b.GetValidMovesForPlayer(opponentColor) != null && b.GetValidMovesForPlayer(opponentColor).Count == 0)
+            {
+                heuristicValue = Double.PositiveInfinity;
             }
 
             return heuristicValue;
