@@ -57,7 +57,7 @@
                             DisplayMemberPath="ValueColorString"
                             SelectedValuePath="ValueColorEnum" 
                             SelectedValue="{Binding DiscColor}"
-                            Width="60"/>
+                            Width="70"/>
                     </StackPanel>
                     <StackPanel Margin="0,10,0,0" Orientation="Horizontal" >
                         <TextBox 
@@ -68,9 +68,6 @@
                             Width="60"
                             Height="22"/>
                         <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
-                            <!--<Label>AI</Label>
-                            <CheckBox IsChecked="{Binding IsAIOpponent}" 
-                                      Margin="0,7,0,0"/> -->
                             <ComboBox 
                                 Margin="10,0,0,0"  
                                 x:Name="difficultyComboBox"
@@ -78,7 +75,7 @@
                                 DisplayMemberPath="ValueDifficultyString"
                                 SelectedValuePath="ValueDifficultyEnum" 
                                 SelectedValue="{Binding Difficulty}"
-                                Width="60"/>
+                                Width="70"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
