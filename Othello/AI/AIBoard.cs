@@ -33,18 +33,18 @@ namespace Othello.AI
             {
                 case Difficulty.EASY:
                     {
-                        return new SimpleHeuristicValueDeterminator();
+                        return new EasyHeuristicValueDeterminator();
                     }
                 case Difficulty.MEDIUM:
                     {
-                        return new SimpleHeuristicValueDeterminator();
+                        return new MediumHeuristicValueDeterminator();
                     }
                 case Difficulty.HARD:
                     {
-                        return new SimpleHeuristicValueDeterminator();
+                        return new HardHeuristicValueDeterminator();
                     }
             }
-            return new SimpleHeuristicValueDeterminator();
+            return new EasyHeuristicValueDeterminator();
         }
 
         public int GetCorners(DiscColor dc)
@@ -86,5 +86,20 @@ namespace Othello.AI
             }
             return cornerCloseness;
         }
+
+        public int GetEdges(DiscColor dc)
+        {
+            int edges = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                if (this.GetDiskFromSquare(i, 0) != null && this.GetDiskFromSquare(i, 0).Color == dc) edges++;
+                if (this.GetDiskFromSquare(i, 7) != null && this.GetDiskFromSquare(i, 7).Color == dc) edges++;
+                if (this.GetDiskFromSquare(0, i) != null && this.GetDiskFromSquare(0, i).Color == dc) edges++;
+                if (this.GetDiskFromSquare(7, i) != null && this.GetDiskFromSquare(7, i).Color == dc) edges++;
+            }
+            return edges;
+        }
+
+        
     }
 }

@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI\AIBoard.cs" />
+    <Compile Include="AI\HardHeuristicValueDeterminator.cs" />
     <Compile Include="AI\HeuristicValueDeterminator.cs" />
+    <Compile Include="AI\MediumHeuristicValueDeterminator.cs" />
     <Compile Include="AI\NodeType.cs" />
-    <Compile Include="AI\SimpleHeuristicValueDeterminator.cs" />
+    <Compile Include="AI\EasyHeuristicValueDeterminator.cs" />
     <Compile Include="AI\State.cs" />
     <Compile Include="AI\StateNode.cs" />
     <Compile Include="AI\Node.cs" />
