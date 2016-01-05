@@ -201,7 +201,7 @@
                     <Label Content="{Binding Score}"/>
                 </StackPanel>
             </StackPanel>
-            <Button Width="150" Click="MainMenu" Canvas.Bottom="0" Canvas.Left="0">Exit Game</Button>
+            <Button Width="150" Click="NavigateMainMenu" Canvas.Bottom="0" Canvas.Left="0">Exit Game</Button>
         </Canvas>
     </Grid>   
 </Page>

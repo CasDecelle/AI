@@ -7,6 +7,12 @@
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="Scores">
 
+    <Page.Resources>
+        <Style TargetType="DataGridCell">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -34,7 +40,7 @@
                     <DataGridTextColumn Header="Score" Binding="{Binding Score}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Margin="0,5,0,0" Width="100" Click="MainMenu">Main Menu</Button>
+            <Button Margin="0,5,0,0" Width="100" Click="NavigateMainMenu">Main Menu</Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,16 +19,22 @@ namespace WpfGUI.Views
     /// <summary>
     /// Interaction logic for Options.xaml
     /// </summary>
-    public partial class Options : Page
+    public partial class Credits : Page
     {
-        public Options()
+        public Credits()
         {
             InitializeComponent();
         }
 
-        public void MainMenu(object sender, EventArgs e)
+        public void NavigateMainMenu(object sender, EventArgs e)
         {
             Switcher.pageSwitcher.Navigate(new MainMenu());
+        }
+
+        private void HyperlinkRequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

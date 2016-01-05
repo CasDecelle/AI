@@ -36,18 +36,18 @@ namespace WpfGUI.Views
             this.initializePlaceholderText();
         }
 
-        public void StartGame(object sender, EventArgs e)
+        public void NavigateStartGame(object sender, EventArgs e)
         {
             this.pickPlayerGrid.Visibility = System.Windows.Visibility.Visible;
             comboBox.SelectedIndex = 0;
         }
 
-        public void Options(object sender, EventArgs e)
+        public void NavigateCredits(object sender, EventArgs e)
         {
-            Switcher.pageSwitcher.Navigate(new Options());
+            Switcher.pageSwitcher.Navigate(new Credits());
         }
 
-        public void Highscores(object sender, EventArgs e)
+        public void NavigateHighscores(object sender, EventArgs e)
         {
             Switcher.pageSwitcher.Navigate(new Highscores());
         }

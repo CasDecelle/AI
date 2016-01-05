@@ -1,11 +1,11 @@
-﻿<Page x:Class="WpfGUI.Views.Options"
+﻿<Page x:Class="WpfGUI.Views.Credits"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-	Title="Options">
+      Title="Credits">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -19,13 +19,14 @@
             <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Options</Label>
-            <Label HorizontalAlignment="Center">Option1</Label>
-            <Label HorizontalAlignment="Center">Option2</Label>
-            <Label HorizontalAlignment="Center">Option3</Label>
-            <Label HorizontalAlignment="Center">Option4</Label>
-            <Label HorizontalAlignment="Center">Option5</Label>
-            <Button Width="100" Click="MainMenu">Main Menu</Button>
+            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Credits</Label>
+            <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center">Othello is made by Cas Decelle and Kevin De Clerck</TextBlock>
+            <TextBlock Margin="0,10,0,20" HorizontalAlignment="Center">           
+                <Hyperlink NavigateUri="https://github.com/CasDecelle/AI.git" RequestNavigate="HyperlinkRequestNavigate">
+                    GitHub
+                </Hyperlink>
+            </TextBlock>
+            <Button Width="100" Click="NavigateMainMenu">Main Menu</Button>
         </StackPanel>
     </Grid>
 </Page>

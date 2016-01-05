@@ -57,14 +57,14 @@
     <Compile Include="ISubmitPlayer.cs" />
     <Compile Include="ValidatePlayerCommand.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
-    <Compile Include="Views\Options.xaml.cs">
-      <DependentUpon>Options.xaml</DependentUpon>
+    <Compile Include="Views\Credits.xaml.cs">
+      <DependentUpon>Credits.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Highscores.xaml.cs">
       <DependentUpon>Highscores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switcher.cs" />
-    <Page Include="Views\Options.xaml">
+    <Page Include="Views\Credits.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -98,7 +98,7 @@ namespace WpfGUI.Views
             }
         }
 
-        public void MainMenu(object sender, EventArgs e)
+        public void NavigateMainMenu(object sender, EventArgs e)
         {
             Switcher.pageSwitcher.Navigate(new MainMenu());
         }
