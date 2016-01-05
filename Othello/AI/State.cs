@@ -59,7 +59,7 @@ namespace Othello.AI
                         flankingDirections = b.IsMoveValid(move.Item1, move.Item2, color);
                         b.MakeMove(move.Item1, move.Item2, color, flankingDirections);
 
-                        //Construct StateSpaceNode
+                        //Construct StateNode
                         StateNode node = new StateNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move, color);
                         parentNode.AddChild(node);
 
