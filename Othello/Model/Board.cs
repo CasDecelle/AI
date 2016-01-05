@@ -128,8 +128,7 @@ namespace Othello.Model
                     if (this.IsMoveValid(i, j, color) != null)
                     {
                         returnList.Add(Tuple.Create(i, j));
-                    }
-                        
+                    } 
                 }
             }
             return returnList = returnList.Count != 0 ? returnList : null;

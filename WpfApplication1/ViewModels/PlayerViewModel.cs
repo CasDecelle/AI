@@ -18,17 +18,16 @@ namespace WpfGUI.ViewModels
         private DiscColor discColor;
         private int score;
         private List<ComboBoxDiscColor> colorListEnum = new List<ComboBoxDiscColor>();
+        private List<ComboBoxDifficulty> difficultyListEnum = new List<ComboBoxDifficulty>();
         private ISubmitPlayer submitPlayer;
         private string opponentName;
-        private bool isAIOpponent;
+        private Difficulty difficulty;
 
         public PlayerViewModel(ISubmitPlayer submitPlayer)
         {
             this.submitPlayer = submitPlayer;
-            colorListEnum.Add(new ComboBoxDiscColor() { ValueColorEnum = DiscColor.None, ValueColorString = "Color" });
-            colorListEnum.Add(new ComboBoxDiscColor() { ValueColorEnum = DiscColor.Black, ValueColorString = "Black" });
-            colorListEnum.Add(new ComboBoxDiscColor() { ValueColorEnum = DiscColor.White, ValueColorString = "White" });
             this.ValidatePlayerCommand = new ValidatePlayerCommand(this);
+            this.InitializeComboBoxLists();
         }
 
         public PlayerViewModel()
@@ -41,6 +40,17 @@ namespace WpfGUI.ViewModels
             this.name = player.Name;
             this.score = player.Score;
             this.discColor = player.Color;
+        }
+
+        private void InitializeComboBoxLists()
+        {
+            colorListEnum.Add(new ComboBoxDiscColor() { ValueColorEnum = DiscColor.None, ValueColorString = "Color" });
+            colorListEnum.Add(new ComboBoxDiscColor() { ValueColorEnum = DiscColor.Black, ValueColorString = "Black" });
+            colorListEnum.Add(new ComboBoxDiscColor() { ValueColorEnum = DiscColor.White, ValueColorString = "White" });
+            difficultyListEnum.Add(new ComboBoxDifficulty() { ValueDifficultyEnum = Difficulty.NONE, ValueDifficultyString = "No AI" });
+            difficultyListEnum.Add(new ComboBoxDifficulty() { ValueDifficultyEnum = Difficulty.EASY, ValueDifficultyString = "Easy"});
+            difficultyListEnum.Add(new ComboBoxDifficulty() { ValueDifficultyEnum = Difficulty.MEDIUM, ValueDifficultyString = "Medium"});
+            difficultyListEnum.Add(new ComboBoxDifficulty() { ValueDifficultyEnum = Difficulty.HARD, ValueDifficultyString = "Hard"});
         }
 
         public string Name 
@@ -92,13 +102,13 @@ namespace WpfGUI.ViewModels
             }
         }
 
-        public bool IsAIOpponent
+        public Difficulty Difficulty
         {
-            get { return this.isAIOpponent; }
+            get { return this.difficulty; }
             set
             {
-                this.isAIOpponent = value;
-                NotifyPropertyChanged("IsAIOpponent");
+                this.difficulty = value;
+                NotifyPropertyChanged("Difficulty");
             }
         }
 
@@ -111,6 +121,19 @@ namespace WpfGUI.ViewModels
                 {
                     this.colorListEnum = value;
                     NotifyPropertyChanged("ColorListEnum");
+                }
+            }
+        }
+
+        public List<ComboBoxDifficulty> DifficultyListEnum
+        {
+            get { return this.difficultyListEnum; }
+            set
+            {
+                if (value != this.difficultyListEnum)
+                {
+                    this.difficultyListEnum = value;
+                    NotifyPropertyChanged("DifficultyListEnum");
                 }
             }
         }

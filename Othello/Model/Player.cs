@@ -11,6 +11,7 @@ namespace Othello.Model
         private string name;
         private DiscColor color;
         private int score;
+        private Difficulty difficulty;
 
         public Player()
         {
@@ -36,6 +37,12 @@ namespace Othello.Model
         public int Score { 
             get{ return this.score; }
             set { this.score = value; }
+        }
+
+        public Difficulty Difficulty
+        {
+            get { return this.difficulty; }
+            set { this.difficulty = value; }
         }
 
         public enum Type

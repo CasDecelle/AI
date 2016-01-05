@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ComboBoxDifficulty.cs" />
     <Compile Include="ComboBoxDiscColor.cs" />
     <Compile Include="ISubmitPlayer.cs" />
     <Compile Include="ValidatePlayerCommand.cs" />

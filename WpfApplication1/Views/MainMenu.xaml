@@ -52,7 +52,7 @@
                             Height="22"/>
                         <ComboBox 
                             Margin="10,0,0,0"  
-                            x:Name="comboBox"
+                            x:Name="colorComboBox"
                             ItemsSource="{Binding ColorListEnum}" 
                             DisplayMemberPath="ValueColorString"
                             SelectedValuePath="ValueColorEnum" 
@@ -67,15 +67,19 @@
                             Text="{Binding OpponentName, UpdateSourceTrigger=PropertyChanged}"
                             Width="60"
                             Height="22"/>
-                        <StackPanel Margin="5,0,0,0" Orientation="Horizontal">
-                            <Label>AI</Label>
+                        <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                            <!--<Label>AI</Label>
                             <CheckBox IsChecked="{Binding IsAIOpponent}" 
-                                      Margin="0,7,0,0"/>
+                                      Margin="0,7,0,0"/> -->
+                            <ComboBox 
+                                Margin="10,0,0,0"  
+                                x:Name="difficultyComboBox"
+                                ItemsSource="{Binding DifficultyListEnum}" 
+                                DisplayMemberPath="ValueDifficultyString"
+                                SelectedValuePath="ValueDifficultyEnum" 
+                                SelectedValue="{Binding Difficulty}"
+                                Width="60"/>
                         </StackPanel>
-                        
-                        
-
-
                     </StackPanel>
                 </StackPanel>
                 <Button Content="Start" 

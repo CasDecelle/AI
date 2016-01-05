@@ -19,10 +19,11 @@ namespace Othello.Model
             set { this.board = value; }
         }
 
-        public Robot(Board board, String name, DiscColor color)
+        public Robot(Board board, String name, DiscColor color, Difficulty difficulty)
             : base(name, color)
         {
             this.board = board;
+            this.Difficulty = difficulty;
         }
 
         public Tuple<int, int> GetBestMove(Tuple<int, int> lastMove)

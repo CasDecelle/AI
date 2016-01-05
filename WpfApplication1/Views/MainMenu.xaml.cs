@@ -39,7 +39,8 @@ namespace WpfGUI.Views
         public void NavigateStartGame(object sender, EventArgs e)
         {
             this.pickPlayerGrid.Visibility = System.Windows.Visibility.Visible;
-            comboBox.SelectedIndex = 0;
+            colorComboBox.SelectedIndex = 0;
+            difficultyComboBox.SelectedIndex = 0;
         }
 
         public void NavigateCredits(object sender, EventArgs e)
@@ -54,16 +55,16 @@ namespace WpfGUI.Views
 
         public void SubmitPlayer()
         {
-            controller.CreateHumanPlayer(pvm.Name, pvm.DiscColor);
+            controller.CreateHumanPlayer(pvm.Name, pvm.DiscColor, pvm.Difficulty);
             Disc disc = new Disc(pvm.DiscColor);
             disc.InvertDisc();
-            if (pvm.IsAIOpponent)
+            if (pvm.Difficulty == Difficulty.NONE)
             {
-                controller.CreateRoboticPlayer(pvm.OpponentName, disc.Color);
+                controller.CreateHumanPlayer(pvm.OpponentName, disc.Color, pvm.Difficulty);
             }
             else
             {
-                controller.CreateHumanPlayer(pvm.OpponentName, disc.Color);
+                controller.CreateRoboticPlayer(pvm.OpponentName, disc.Color, pvm.Difficulty);
             }
             Switcher.pageSwitcher.Navigate(new LoadGame(this.controller));
         }

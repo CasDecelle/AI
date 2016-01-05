@@ -64,17 +64,17 @@ namespace Othello.Controller
             this.players.AddLast(currentPlayer);
         }
 
-        public void CreateHumanPlayer(String name, DiscColor color)
+        public void CreateHumanPlayer(String name, DiscColor color, Difficulty difficulty)
         {
-            this.CreatePlayer(name, Player.Type.Human, color);
+            this.CreatePlayer(name, Player.Type.Human, color, difficulty);
         }
 
-        public void CreateRoboticPlayer(String name, DiscColor color)
+        public void CreateRoboticPlayer(String name, DiscColor color, Difficulty difficulty)
         {
-            this.CreatePlayer(name, Player.Type.Robot, color);
+            this.CreatePlayer(name, Player.Type.Robot, color, difficulty);
         }
 
-        private void CreatePlayer(String name, Player.Type type, DiscColor color) {
+        private void CreatePlayer(String name, Player.Type type, DiscColor color, Difficulty difficulty) {
             Player player = null;
             switch (type)
             {
@@ -82,7 +82,7 @@ namespace Othello.Controller
                     player = new Human(name, color);
                     break;
                 case Player.Type.Robot:
-                    player = new Robot(board, name, color);
+                    player = new Robot(board, name, color, difficulty);
                     break;
             }
             this.players.AddLast(player);
@@ -111,6 +111,7 @@ namespace Othello.Controller
                 this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
                 this.PickPlayer();
                 this.CalculateScore();
+
                 return true;
             }
             return false;
