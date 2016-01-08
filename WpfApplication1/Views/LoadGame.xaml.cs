@@ -49,6 +49,7 @@ namespace WpfGUI.Views
             if (controller.ExecuteAIMove(row, col))
                 this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
+            this.AllowUIUpdate();
         }
 
         public void StartGame()
