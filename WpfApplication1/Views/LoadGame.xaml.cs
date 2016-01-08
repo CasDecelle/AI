@@ -18,6 +18,7 @@ using System.Threading;
 using WpfGUI.ViewModels;
 using System.Windows.Threading;
 using Othello.Utility;
+using System.Collections;
 
 namespace WpfGUI.Views
 {
@@ -94,6 +95,16 @@ namespace WpfGUI.Views
                         }
                     }
 
+                }
+            }
+            ArrayList possibleMoves = controller.Board.GetValidMovesForPlayer(controller.CurrentPlayer.Color);
+            if (possibleMoves != null)
+            {
+                foreach (Tuple<int, int> possibleMove in possibleMoves)
+                {
+                    String discName = "Disc" + possibleMove.Item1 + "_" + possibleMove.Item2;
+                    Ellipse disc = (Ellipse)this.FindName(discName);
+                    disc.Fill = new SolidColorBrush(Colors.DarkGreen);
                 }
             }
         }
