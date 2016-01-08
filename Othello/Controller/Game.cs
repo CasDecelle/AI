@@ -102,21 +102,27 @@ namespace Othello.Controller
 
         public bool ExecuteAIMove(int row, int col)
         {
-            if (this.currentPlayer.GetType() == typeof(Robot) 
+            bool executed = false;
+            Disc opponentDisc = new Disc(this.currentPlayer.Color); opponentDisc.InvertDisc();
+            do
+            {
+                if (this.currentPlayer.GetType() == typeof(Robot)
                 && this.board.ValidMoveRemaining(this.currentPlayer.Color)
                 && !this.board.IsGameFinished())
-            {
-                Thread.Sleep(1500);
-                Robot beepBoop = (Robot)currentPlayer;
-                Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
-                ArrayList flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
-                this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
-                this.PickPlayer();
-                this.CalculateScore();
-
-                return true;
-            }
-            return false;
+                {
+                    Thread.Sleep(1500);
+                    Robot beepBoop = (Robot)currentPlayer;
+                    Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
+                    ArrayList flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
+                    this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
+                    if (this.board.ValidMoveRemaining(opponentDisc.Color) != null) 
+                        this.PickPlayer();
+                    this.CalculateScore();
+                    executed = true;
+                }
+            } while (this.board.ValidMoveRemaining(opponentDisc.Color) == null);
+            
+            return executed;
         }
 
         public Player GetWinner()
