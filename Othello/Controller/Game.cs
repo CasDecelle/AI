@@ -120,7 +120,7 @@ namespace Othello.Controller
                     this.CalculateScore();
                     executed = true;
                 }
-            } while (this.board.ValidMoveRemaining(opponentDisc.Color) == null);
+            } while (this.board.ValidMoveRemaining(opponentDisc.Color) == null && this.board.ValidMoveRemaining(this.currentPlayer.Color) != null);
             
             return executed;
         }

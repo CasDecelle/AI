@@ -1,2 +1,2 @@
-| MAX_NODE | MOVE: 1, 6 | HV: 0
-	| MIN_NODE | MOVE: 1, 7 | HV: 193452,4
+| MAX_NODE | MOVE: 7, 1 | HV: 0
+	| MIN_NODE | MOVE: 7, 2 | HV: 201022,4
