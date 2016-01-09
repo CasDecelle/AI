@@ -46,8 +46,16 @@ namespace WpfGUI.Views
             this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
             this.AllowUIUpdate();
-            if (controller.ExecuteAIMove(row, col))
-                this.SwitchPlayer(this.controller.CurrentPlayer);
+            Disc opponentDisc = new Disc(this.controller.CurrentPlayer.Color); opponentDisc.InvertDisc();
+            do
+            {
+                this.controller.ExecuteAIMove(row, col);
+                UpdateBoard();
+                this.AllowUIUpdate();
+            } while (this.controller.Board.GetValidMovesForPlayer(opponentDisc.Color) == null && this.controller.Board.GetValidMovesForPlayer(this.controller.CurrentPlayer.Color) != null);
+
+            /*if (controller.ExecuteAIMove(row, col))*/
+            this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
         }
 

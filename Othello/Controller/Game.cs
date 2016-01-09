@@ -104,24 +104,23 @@ namespace Othello.Controller
         {
             bool executed = false;
             Disc opponentDisc = new Disc(this.currentPlayer.Color); opponentDisc.InvertDisc();
-            do
-            {
+            /*do
+            {*/
                 if (this.currentPlayer.GetType() == typeof(Robot)
                 && this.board.ValidMoveRemaining(this.currentPlayer.Color)
                 && !this.board.IsGameFinished())
                 {
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
                     Robot beepBoop = (Robot)currentPlayer;
                     Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
                     ArrayList flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
                     this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
-                    if (this.board.ValidMoveRemaining(opponentDisc.Color) != null) 
+                    if (this.board.ValidMoveRemaining(opponentDisc.Color))
                         this.PickPlayer();
                     this.CalculateScore();
                     executed = true;
                 }
-            } while (this.board.ValidMoveRemaining(opponentDisc.Color) == null && this.board.ValidMoveRemaining(this.currentPlayer.Color) != null);
-            
+            /*} while (this.board.ValidMoveRemaining(opponentDisc.Color) == null && this.board.ValidMoveRemaining(this.currentPlayer.Color) != null);*/
             return executed;
         }
 
