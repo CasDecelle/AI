@@ -45,14 +45,16 @@ namespace WpfGUI.Views
             controller.ExecuteValidMove(row, col);
             this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
-            this.AllowUIUpdate();
+            this.ForceUIUpdate();
             Disc opponentDisc = new Disc(this.controller.CurrentPlayer.Color); opponentDisc.InvertDisc();
             do
             {
                 this.controller.ExecuteAIMove(row, col);
                 UpdateBoard();
-                this.AllowUIUpdate();
-            } while (this.controller.Board.GetValidMovesForPlayer(opponentDisc.Color) == null && this.controller.Board.GetValidMovesForPlayer(this.controller.CurrentPlayer.Color) != null);
+                this.ForceUIUpdate();
+                if (controller.Board.IsGameFinished())
+                    return;
+            } while (!this.controller.Board.ValidMoveRemaining(opponentDisc.Color));
 
             /*if (controller.ExecuteAIMove(row, col))*/
             this.SwitchPlayer(this.controller.CurrentPlayer);
@@ -69,18 +71,20 @@ namespace WpfGUI.Views
 
         public void FinishGame()
         {
-            Player winner = this.controller.GetWinner();
-            pvm = new PlayerViewModel(winner);
-            this.DataContext = pvm;
-            this.gamePanel.Visibility = System.Windows.Visibility.Collapsed;
-            this.finishPanel.Visibility = System.Windows.Visibility.Visible;
-            this.WriteHighscore(winner);
+            if (controller.Board.IsGameFinished())
+            {
+                Player winner = this.controller.GetWinner();
+                pvm = new PlayerViewModel(winner);
+                this.DataContext = pvm;
+                this.gamePanel.Visibility = System.Windows.Visibility.Collapsed;
+                this.finishPanel.Visibility = System.Windows.Visibility.Visible;
+                this.WriteHighscore(winner);
+            }
         }
 
         public void UpdateBoard()
         {
-            if (controller.Board.IsGameFinished()) 
-                this.FinishGame();
+            this.FinishGame();
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -129,7 +133,7 @@ namespace WpfGUI.Views
             pvm.Score = player.Score;
         }
 
-        private void AllowUIUpdate()
+        private void ForceUIUpdate()
         {
             DispatcherFrame frame = new DispatcherFrame();
             Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Render, new DispatcherOperationCallback(delegate(object parameter)

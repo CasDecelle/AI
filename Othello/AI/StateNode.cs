@@ -88,7 +88,14 @@ namespace Othello.AI
             sb.Append(", ");
             sb.Append(this.move.Item2);
             sb.Append(" | HV: ");
-            sb.Append(this.HeuristicValue);
+            if (this.HeuristicValue == Double.PositiveInfinity)
+                sb.Append("+\u221E");
+            else if (this.HeuristicValue == Double.NegativeInfinity)
+                sb.Append("-\u221E");
+            else
+            {
+                sb.Append(this.HeuristicValue);
+            }
             sb.Append("\n");
             return sb.ToString();
         }

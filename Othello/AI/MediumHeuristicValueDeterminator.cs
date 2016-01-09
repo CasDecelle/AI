@@ -50,14 +50,12 @@ namespace Othello.AI
             heuristicValue = (10 * discs) + (78.922 * mobility);
 
             // Winning move
-            if (b.GetValidMovesForPlayer(color) != null && b.GetValidMovesForPlayer(color).Count == 0)
+            if (b.IsGameFinished())
             {
-                heuristicValue = Double.NegativeInfinity;
-            }
-            
-            if (b.GetValidMovesForPlayer(opponentColor) != null && b.GetValidMovesForPlayer(opponentColor).Count == 0)
-            {
-                heuristicValue = Double.PositiveInfinity;
+                if (b.CountDiscs(color) < b.CountDiscs(opponentColor))
+                    heuristicValue = Double.NegativeInfinity;
+                if (b.CountDiscs(color) > b.CountDiscs(opponentColor))
+                    heuristicValue = Double.PositiveInfinity;
             }
 
             return heuristicValue;
