@@ -115,8 +115,9 @@ namespace Othello.Controller
                     Tuple<int, int> move = beepBoop.GetBestMove(Tuple.Create(row, col));
                     ArrayList flankingDirections = this.board.IsMoveValid(move.Item1, move.Item2, beepBoop.Color);
                     this.board.MakeMove(move.Item1, move.Item2, currentPlayer.Color, flankingDirections);
+                    /*
                     if (this.board.ValidMoveRemaining(opponentDisc.Color))
-                        this.PickPlayer();
+                        this.PickPlayer();*/
                     this.CalculateScore();
                     executed = true;
                 }

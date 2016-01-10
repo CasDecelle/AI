@@ -47,15 +47,17 @@ namespace WpfGUI.Views
             UpdateBoard();
             this.ForceUIUpdate();
             Disc opponentDisc = new Disc(this.controller.CurrentPlayer.Color); opponentDisc.InvertDisc();
+            bool moveExecuted = false;
             do
             {
-                this.controller.ExecuteAIMove(row, col);
+                moveExecuted = this.controller.ExecuteAIMove(row, col);
                 UpdateBoard();
                 this.ForceUIUpdate();
-                if (controller.Board.IsGameFinished())
-                    return;
-            } while (!this.controller.Board.ValidMoveRemaining(opponentDisc.Color));
-
+                if (this.FinishGame())
+                    break;
+            } while (!this.controller.Board.ValidMoveRemaining(opponentDisc.Color) && this.controller.Board.ValidMoveRemaining(this.controller.CurrentPlayer.Color));
+            if (moveExecuted)
+                this.controller.PickPlayer();
             /*if (controller.ExecuteAIMove(row, col))*/
             this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
@@ -69,9 +71,10 @@ namespace WpfGUI.Views
             UpdateBoard();
         }
 
-        public void FinishGame()
+        public bool FinishGame()
         {
-            if (controller.Board.IsGameFinished())
+            bool finished = this.controller.Board.IsGameFinished();
+            if (finished)
             {
                 Player winner = this.controller.GetWinner();
                 pvm = new PlayerViewModel(winner);
@@ -80,6 +83,7 @@ namespace WpfGUI.Views
                 this.finishPanel.Visibility = System.Windows.Visibility.Visible;
                 this.WriteHighscore(winner);
             }
+            return finished;
         }
 
         public void UpdateBoard()
