@@ -50,7 +50,7 @@ namespace Othello.Model
             Human, Robot
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return string.Format("{0};{1};{2}\n", name, score, difficulty.ToString());
         }

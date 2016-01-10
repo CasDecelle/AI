@@ -14,14 +14,7 @@ namespace Othello.AI
         private readonly Player maxPlayer;
         private NodeType type;
         private Tuple<int, int> move;
-        private DiscColor currentColor;
         private double heuristicValue;
-
-        public DiscColor CurrentColor
-        {
-            get { return currentColor; }
-            set { currentColor = value; }
-        }
 
         public AIBoard Board
         {
@@ -52,13 +45,12 @@ namespace Othello.AI
             this.type = t;
         }
 
-        public StateNode(AIBoard b, Player p, NodeType t, Tuple<int, int> m, DiscColor dc)
+        public StateNode(AIBoard b, Player p, NodeType t, Tuple<int, int> m)
         {
             this.board = b;
             this.maxPlayer = p;
             this.type = t;
             this.move = m;
-            this.currentColor = dc;
         }
 
         public void CalculateHeuristicValue()
@@ -84,9 +76,16 @@ namespace Othello.AI
             sb.Append("| ");
             sb.Append(this.type.ToString());
             sb.Append(" | MOVE: ");
-            sb.Append(this.move.Item1);
-            sb.Append(", ");
-            sb.Append(this.move.Item2);
+            if (move != null)
+            {
+                sb.Append(this.move.Item1);
+                sb.Append(", ");
+                sb.Append(this.move.Item2);
+            }
+            else
+            {
+                sb.Append("NO VALID MOVES!");
+            }
             sb.Append(" | HV: ");
             if (this.HeuristicValue == Double.PositiveInfinity)
                 sb.Append("+\u221E");

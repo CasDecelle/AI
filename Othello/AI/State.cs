@@ -35,16 +35,21 @@ namespace Othello.AI
         private void BuildState(Board b)
         {
             this.maxNode = new StateNode(new AIBoard(b, this.maxPlayer, NodeType.MAX_NODE, this.maxDepth), this.maxPlayer, NodeType.MAX_NODE);
-            this.AddChildren(this.maxNode, this.maxDepth, this.maxPlayer, this.maxPlayer.Color);
+            this.AddChildren(this.maxNode, this.maxDepth, this.maxPlayer.Color);
         }
 
-        private void AddChildren(StateNode parentNode, int depth, Player player, DiscColor color)
+        private void AddChildren(StateNode parentNode, int depth, DiscColor color)
         {
             if (depth == 0) return;
 
             ArrayList validMoves = new ArrayList();
             validMoves = parentNode.Board.GetValidMovesForPlayer(color);
-
+            
+            if (validMoves == null & parentNode.Board.IsGameFinished())
+            {
+                return;
+            }
+            
             if (validMoves != null)
             {
                 foreach (Tuple<int, int> move in validMoves)
@@ -60,7 +65,7 @@ namespace Othello.AI
                         b.MakeMove(move.Item1, move.Item2, color, flankingDirections);
 
                         //Construct StateNode
-                        StateNode node = new StateNode(b, player, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move, color);
+                        StateNode node = new StateNode(b, this.maxPlayer, NodeTypeExtensions.GetOppositeType(parentNode.NodeType), move);
                         parentNode.AddChild(node);
 
                         //New DiscColor
@@ -68,13 +73,12 @@ namespace Othello.AI
                         invertedDisc.InvertDisc();
 
                         //Recursive call for new state
-                        this.AddChildren(node, depth - 1, player, invertedDisc.Color);
+                        this.AddChildren(node, depth - 1, invertedDisc.Color);
 
                         node.CalculateHeuristicValue();
                     }
                 }
             }
-            
         }
 
         public StateNode GetBestMove()
