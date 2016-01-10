@@ -52,7 +52,7 @@ namespace Othello.Model
 
         public string ToString()
         {
-            return string.Format("{0};{1}\n", name, score);
+            return string.Format("{0};{1};{2}\n", name, score, difficulty.ToString());
         }
 
     }

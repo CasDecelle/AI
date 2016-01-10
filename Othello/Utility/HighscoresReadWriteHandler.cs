@@ -51,11 +51,13 @@ namespace Othello.Utility
             int index = this.file.IndexOf("\n");
             string row = this.file.Substring(0, index);
             this.file = this.file.Substring(index + 1);
-            index = row.IndexOf(";");
-            player.Name = row.Substring(0, index);
+            int firstSemicolonIndex = row.IndexOf(";");
+            int lastSemicolonIndex = row.LastIndexOf(";");
+            player.Name = row.Substring(0,  firstSemicolonIndex);
             int score = 0;
-            Int32.TryParse(row.Substring(index + 1), out score);
+            Int32.TryParse(row.Substring(firstSemicolonIndex + 1, lastSemicolonIndex - firstSemicolonIndex - 1), out score);
             player.Score = score;
+            player.Difficulty = (Difficulty) Enum.Parse(typeof(Difficulty), row.Substring(lastSemicolonIndex + 1));
             return player;
         }
 

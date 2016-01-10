@@ -40,6 +40,7 @@ namespace WpfGUI.ViewModels
             this.name = player.Name;
             this.score = player.Score;
             this.discColor = player.Color;
+            this.difficulty = player.Difficulty;
         }
 
         private void InitializeComboBoxLists()
