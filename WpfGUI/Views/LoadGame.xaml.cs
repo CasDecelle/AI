@@ -53,12 +53,13 @@ namespace WpfGUI.Views
                 moveExecuted = this.controller.ExecuteAIMove(row, col);
                 UpdateBoard();
                 this.ForceUIUpdate();
+                if (this.controller.CurrentPlayer.GetType() == typeof(Human))
+                    break;
                 if (this.FinishGame())
                     break;
             } while (!this.controller.Board.ValidMoveRemaining(opponentDisc.Color) && this.controller.Board.ValidMoveRemaining(this.controller.CurrentPlayer.Color));
             if (this.controller.CurrentPlayer.Difficulty != Difficulty.NONE)
                 this.controller.PickPlayer();
-            /*if (controller.ExecuteAIMove(row, col))*/
             this.SwitchPlayer(this.controller.CurrentPlayer);
             UpdateBoard();
         }

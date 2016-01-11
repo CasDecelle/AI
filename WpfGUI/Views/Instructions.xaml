@@ -8,13 +8,17 @@
 	Title="Instructions">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock x:Name="instructionText" Foreground="White"></TextBlock>
-            <Image x:Name="instructionImage" Loaded="Image_Loaded" Height="150" Width="150" Stretch="Fill"></Image>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="instructionText" Foreground="White" FontFamily="Arial Black" TextWrapping="Wrap" Width="260" Margin="10,10,10,10"></TextBlock>
+                <Image x:Name="instructionImage" Loaded="Image_Loaded" Height="200" Width="200" Stretch="Fill"></Image>
+                
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Width="25" Click="Previous" Margin="0,5,5,0">&#5130;</Button>
-                <Button Width="25" Click="Next" Margin="5,5,0,0">&#5125;</Button>
+                <Button Width="25" Click="Previous" Margin="0,10,10,0">&#5130;</Button>
+                <Button Width="25" Click="Next" Margin="10,10,0,0">&#5125;</Button>
             </StackPanel>
         </StackPanel>
+        
     </Grid>
 </Page>

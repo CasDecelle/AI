@@ -57,15 +57,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ComboBoxDifficulty.cs" />
-    <Compile Include="ComboBoxDiscColor.cs" />
-    <Compile Include="ISubmitPlayer.cs" />
+    <Compile Include="Utility\ComboBoxDifficulty.cs" />
+    <Compile Include="Utility\ComboBoxDiscColor.cs" />
+    <Compile Include="Utility\ISubmitPlayer.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="ValidatePlayerCommand.cs" />
+    <Compile Include="Commands\ValidatePlayerCommand.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="Views\Credits.xaml.cs">
       <DependentUpon>Credits.xaml</DependentUpon>
@@ -73,7 +73,7 @@
     <Compile Include="Views\Highscores.xaml.cs">
       <DependentUpon>Highscores.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Switcher.cs" />
+    <Compile Include="Utility\Switcher.cs" />
     <Page Include="Views\Credits.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

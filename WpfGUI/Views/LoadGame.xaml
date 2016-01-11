@@ -191,7 +191,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="finishPanel" Visibility="Collapsed">
-                <Label Foreground="White" FontWeight="ExtraBold">Game Over</Label>
+                <Label Foreground="White" FontWeight="ExtraBold" FontFamily="Arial Black">Game Over</Label>
                 <StackPanel Orientation="Horizontal">
                     <Label Foreground="White" Content="{Binding Name}"/>
                     <Label Foreground="White">won the game</Label>

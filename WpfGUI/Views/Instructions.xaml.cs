@@ -74,19 +74,21 @@ namespace WpfGUI.Views
             this.imagePaths.Add("\\..\\..\\Resources\\move3.png");
 
             this.explanations = new List<string>();
-            this.explanations.Add("This is the state of the board when you start a new game.\n"
-                + "During your turn, you will have to place one disc.\n"
-                + "A disc can be placed if it aligns with another piece of yours\n"
-                + "and at least one opponent piece can be captured.\n"
-                + "The dark green discs are possible moves you can make.\n"
-                + "In this example, we will be placing the disc on the right.\n");
-            this.explanations.Add("The white piece that was surrounded by the last move is now black.\n"
-                + "All pieces that get surrounded by an opponent move will be captured.\n"
-                + "Watch out though, as an opponent can recapture your pieces.\n\n"
-                + "Hint: the game can sometimes completely turn around in the final moves. \n\n");
-            this.explanations.Add("The game ends when both players have no moves left.\n"
-                + "The player with the highest number of pieces is the winner.\n\n"
-                + "Hint: the corners are valuable, since they can never be recaptured.\n\n\n");
+            this.explanations.Add("This is what the board looks like when you start a new game.\n\n"
+                + "You and your opponent take turns, placing one piece each turn.\n\n"
+                + "Valid moves are indicated with a dark green disc.\n\n"
+                + "In this example, we will play with the black pieces. "
+                + "We will begin the game by placing a disc in the red square.");
+            this.explanations.Add("Hooray! \n\nYou have captured one of our opponent's pieces. "
+                + "You have turned it into one of your own color.\n\n"
+                + "Be aware though that next turn, your opponent can do the same!\n\n"
+                + "As an example, he will now place a disc in the red square.");
+            this.explanations.Add("You are lucky this time! \n\nYour opponent has only captured one of your pieces.\n\n"
+                + "The game will go on, taking turns, until both players have no moves left.\n\n"
+                + "Keep in mind that you or your opponent can continue playing one of you can not make a valid move.\n\n"
+                + "Never give up though! The game can completely turn around in the last couple of moves.\n\n"
+                + "Are you ready to face the challenge?\n\n"
+                + "Hint: the corners are valuable, since they can never be recaptured.");
         }
 
     }

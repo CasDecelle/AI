@@ -25,24 +25,23 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" Foreground="White">Othello</Label>
-            <Label></Label>
-            <Label></Label>
-            <Label></Label>
-            <Label></Label>
+            <Grid>
+                <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="60" Foreground="Black" FontFamily="Arial Black">Othello</Label>
+                <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="60" Foreground="White" FontFamily="Arial Black" Margin="10,-5,0,20">Othello</Label>
+            </Grid>
+            
             <Button Margin="0,0,0,5" Width ="100" Click="NavigateStartGame">Start Game</Button>
             <Button Margin="0,0,0,5" Width ="100" Click="NavigateHighscores">Highscores</Button>
             <Button Margin="0,0,0,5" Width ="100" Click="NavigateInstructions">Instructions</Button>
             <Button Margin="0,0,0,5" Width ="100" Click="NavigateCredits">Credits</Button>
-            <Label></Label>
-            <Label></Label>
-            
+
             <StackPanel x:Name="pickPlayerGrid" 
                         Visibility="Hidden" 
                         Width="200" 
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Center"
+                        Margin="0,10,0,0" >
                 <StackPanel HorizontalAlignment="Center">
-                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
                         <TextBox 
                             Margin="0,0,0,0"
                             x:Name="player1Name"

@@ -7,26 +7,14 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Credits">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"></ColumnDefinition>
-            <ColumnDefinition Width="50*"></ColumnDefinition>
-            <ColumnDefinition Width="50"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" Foreground="White">Credits</Label>
-            <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Foreground="White">Made by Cas Decelle and Kevin De Clerck</TextBlock>
-            <TextBlock Margin="0,10,0,20" HorizontalAlignment="Center">           
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White">Made by Cas Decelle and Kevin De Clerck</TextBlock>
+        <TextBlock Margin="0,10,0,20" HorizontalAlignment="Center">           
                 <Hyperlink FontWeight="Bold" NavigateUri="https://github.com/CasDecelle/AI.git" RequestNavigate="HyperlinkRequestNavigate">
                     GitHub
                 </Hyperlink>
-            </TextBlock>
-            <Button Width="100" Click="NavigateMainMenu">Main Menu</Button>
-        </StackPanel>
-    </Grid>
+        </TextBlock>
+        <Button Width="100" Click="NavigateMainMenu">Back</Button>
+    </StackPanel>
 </Page>
