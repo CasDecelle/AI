@@ -49,6 +49,8 @@ namespace WpfGUI.Views
 
         private void Previous(object sender, RoutedEventArgs e)
         {
+            if (this.index == 0)
+                Switcher.pageSwitcher.Navigate(new MainMenu());
             if (index > 0)
                 this.index--;
             this.ChangeImage();
