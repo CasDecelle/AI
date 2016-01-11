@@ -62,10 +62,14 @@
     <Compile Include="Utility\HighscoresReadWriteHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Highscores.csv" />
+    <EmbeddedResource Include="Resources\Highscores.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Tree.txt" />
+    <EmbeddedResource Include="Resources\Tree.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
