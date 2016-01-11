@@ -12,13 +12,13 @@ namespace Othello.Utility
 {
     public class HighscoresReadWriteHandler
     {
-        private string separator;
+        private readonly string _separator =";";
+        private readonly string _newLine = "\n";
         private string file;
         private string filePath;
 
         public HighscoresReadWriteHandler(string filePath)
         {
-            this.separator = ";";
             this.filePath = filePath;
         }
 
@@ -48,11 +48,11 @@ namespace Othello.Utility
         private Player ReadRow()
         {
             Player player = new Player();
-            int index = this.file.IndexOf("\n");
+            int index = this.file.IndexOf(this._newLine);
             string row = this.file.Substring(0, index);
             this.file = this.file.Substring(index + 1);
-            int firstSemicolonIndex = row.IndexOf(";");
-            int lastSemicolonIndex = row.LastIndexOf(";");
+            int firstSemicolonIndex = row.IndexOf(this._separator);
+            int lastSemicolonIndex = row.LastIndexOf(this._separator);
             player.Name = row.Substring(0,  firstSemicolonIndex);
             int score = 0;
             Int32.TryParse(row.Substring(firstSemicolonIndex + 1, lastSemicolonIndex - firstSemicolonIndex - 1), out score);

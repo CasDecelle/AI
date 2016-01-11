@@ -32,18 +32,23 @@ namespace Othello.AI
 
             // Mobility
             double mobility = 0;
-            if (b.GetValidMovesForPlayer(color) != null && b.GetValidMovesForPlayer(opponentColor) != null)
+            int player_moves = 0;
+            int opponent_moves = 0;
+            if (b.GetValidMovesForPlayer(color) != null) 
             {
-                int player_moves = b.GetValidMovesForPlayer(color).Count;
-                int opponent_moves = b.GetValidMovesForPlayer(opponentColor).Count;
-                if (player_moves > opponent_moves)
-                {
-                    mobility = (100 * player_moves) / (player_moves + opponent_moves);
-                }
-                if (player_moves < opponent_moves)
-                {
-                    mobility = -(100 * opponent_moves) / (player_moves + opponent_moves);
-                }
+                player_moves = b.GetValidMovesForPlayer(color).Count;
+            }
+            if (b.GetValidMovesForPlayer(opponentColor) != null)
+            {
+                opponent_moves = b.GetValidMovesForPlayer(opponentColor).Count;
+            }
+            if (player_moves > opponent_moves)
+            {
+                mobility = (100 * player_moves) / (player_moves + opponent_moves);
+            }
+            if (player_moves < opponent_moves)
+            {
+                mobility = -(100 * opponent_moves) / (player_moves + opponent_moves);
             }
             
             // Assign weights

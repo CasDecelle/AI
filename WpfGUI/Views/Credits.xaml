@@ -19,10 +19,10 @@
             <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Credits</Label>
-            <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center">Othello is made by Cas Decelle and Kevin De Clerck</TextBlock>
+            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" Foreground="White">Credits</Label>
+            <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Foreground="White">Made by Cas Decelle and Kevin De Clerck</TextBlock>
             <TextBlock Margin="0,10,0,20" HorizontalAlignment="Center">           
-                <Hyperlink NavigateUri="https://github.com/CasDecelle/AI.git" RequestNavigate="HyperlinkRequestNavigate">
+                <Hyperlink FontWeight="Bold" NavigateUri="https://github.com/CasDecelle/AI.git" RequestNavigate="HyperlinkRequestNavigate">
                     GitHub
                 </Hyperlink>
             </TextBlock>

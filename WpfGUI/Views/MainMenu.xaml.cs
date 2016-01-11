@@ -53,6 +53,11 @@ namespace WpfGUI.Views
             Switcher.pageSwitcher.Navigate(new Highscores());
         }
 
+        public void NavigateInstructions(object sender, EventArgs e)
+        {
+            Switcher.pageSwitcher.Navigate(new Instructions());
+        }
+
         public void SubmitPlayer()
         {
             controller.CreateHumanPlayer(pvm.Name, pvm.DiscColor, pvm.Difficulty);
@@ -69,7 +74,7 @@ namespace WpfGUI.Views
             Switcher.pageSwitcher.Navigate(new LoadGame(this.controller));
         }
 
-        private void GotFocus(object sender, RoutedEventArgs e)
+        new private void GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             if (textBox.Text.Equals("Player 1") || textBox.Text.Equals("Player 2"))
@@ -79,7 +84,7 @@ namespace WpfGUI.Views
             }
         }
 
-        private void LostFocus(object sender, RoutedEventArgs e)
+        new private void LostFocus(object sender, RoutedEventArgs e)
         {
             this.initializePlaceholderText();
         }

@@ -55,8 +55,8 @@ namespace ConsoleApplication
 
         public void StartGame()
         {
-            game.CreateHumanPlayer("Speler 1", DiscColor.Black);
-            game.CreateRoboticPlayer("Speler 2", DiscColor.White);
+            game.CreateHumanPlayer("Speler 1", DiscColor.Black, Difficulty.NONE);
+            game.CreateRoboticPlayer("Speler 2", DiscColor.White, Difficulty.NONE);
             game.StartGame();
 
             while (!game.IsFinished)
@@ -91,8 +91,8 @@ namespace ConsoleApplication
                 else
                 {
                     Robot r = (Robot)game.CurrentPlayer;
-                    Tuple<int, int> t = r.GetBestMove();
-                    game.Board.ExecuteValidMove(t.Item1, t.Item2);
+                    Tuple<int, int> t = r.GetBestMove(move);
+                    game.ExecuteValidMove(t.Item1, t.Item2);
                 }
             }
         }

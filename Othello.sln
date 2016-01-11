@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Othello", "Othello\Othello.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{9C7E451A-A809-4A21-82A3-DD0CF14B5317}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGUI", "WpfApplication1\WpfGUI.csproj", "{4259F768-5F67-4321-9653-A2BE7C92251C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGUI", "WpfGUI\WpfGUI.csproj", "{4259F768-5F67-4321-9653-A2BE7C92251C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
