@@ -82,11 +82,13 @@ namespace WpfGUI.Views
                 + "and at least one opponent piece can be captured.\n"
                 + "The dark green discs are possible moves you can make.\n"
                 + "In this example, we will be placing the disc on the right.\n");
-            this.explanations.Add("The white disc that was surrounded by the last move is now black.\n"
-                + "Watch out though, as an opponent can recapture your pieces.\n\n\n\n\n");
+            this.explanations.Add("The white piece that was surrounded by the last move is now black.\n"
+                + "All pieces that get surrounded by an opponent move will be captured.\n"
+                + "Watch out though, as an opponent can recapture your pieces.\n\n"
+                + "Hint: the game can sometimes completely turn around in the final moves. \n\n");
             this.explanations.Add("The game ends when both players have no moves left.\n"
                 + "The player with the highest number of pieces is the winner.\n\n"
-                + "Tip: the corners are valuable, since they can never be recaptured.\n\n\n");
+                + "Hint: the corners are valuable, since they can never be recaptured.\n\n\n");
         }
 
     }
