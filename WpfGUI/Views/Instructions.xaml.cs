@@ -60,11 +60,9 @@ namespace WpfGUI.Views
             string imgPath = Directory.GetCurrentDirectory() + this.imagePaths.ElementAt(this.index);
             b.BeginInit();
             b.UriSource = new Uri(imgPath);
-            //b.UriSource = new Uri("C:\\Users\\Cas\\Documents\\GitHub\\AI\\WpfGUI\\Resources\\move1.png");
             b.EndInit();
             instructionImage.Source = b;
-            /*var image = sender as Image;
-            image.Source = b;*/
+
             instructionText.Text = this.explanations.ElementAt(this.index);
         }
 
