@@ -31,8 +31,8 @@
             </Grid>
             
             <Button Margin="0,0,0,5" Width ="100" Click="NavigateStartGame">Start Game</Button>
-            <Button Margin="0,0,0,5" Width ="100" Click="NavigateHighscores">Highscores</Button>
             <Button Margin="0,0,0,5" Width ="100" Click="NavigateInstructions">Instructions</Button>
+            <Button Margin="0,0,0,5" Width ="100" Click="NavigateHighscores">Highscores</Button>
             <Button Margin="0,0,0,5" Width ="100" Click="NavigateCredits">Credits</Button>
 
             <StackPanel x:Name="pickPlayerGrid" 
