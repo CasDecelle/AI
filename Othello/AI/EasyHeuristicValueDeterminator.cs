@@ -9,10 +9,11 @@ namespace Othello.AI
 {
     public class EasyHeuristicValueDeterminator : HeuristicValueDeterminator 
     {
-        public double CalculateHeuristicValue(AIBoard b, DiscColor color)
+        public double CalculateHeuristicValue(AIBoard b)
         {
             double heuristicValue = 0;
 
+            DiscColor color = b.MaxPlayer.Color;
             Disc opponentDisc = new Disc(color);
             opponentDisc.InvertDisc();
             DiscColor opponentColor = opponentDisc.Color;

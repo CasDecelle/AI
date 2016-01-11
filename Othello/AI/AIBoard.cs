@@ -23,8 +23,14 @@ namespace Othello.AI
             
         }
 
-        public double GetHeuristicValue(DiscColor dc){
-            return heuristicValueDeterminator.CalculateHeuristicValue(this, dc);
+        public Player MaxPlayer
+        {
+            get { return this.maxPlayer; }
+            set { this.maxPlayer = value; }
+        }
+
+        public double GetHeuristicValue(){
+            return heuristicValueDeterminator.CalculateHeuristicValue(this);
         }
 
         private HeuristicValueDeterminator SetHeuristicValueDeterminator(Difficulty difficulty)

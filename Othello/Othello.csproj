@@ -46,7 +46,7 @@
     <Compile Include="AI\MediumHeuristicValueDeterminator.cs" />
     <Compile Include="AI\NodeType.cs" />
     <Compile Include="AI\EasyHeuristicValueDeterminator.cs" />
-    <Compile Include="AI\State.cs" />
+    <Compile Include="AI\StateSpace.cs" />
     <Compile Include="AI\StateNode.cs" />
     <Compile Include="AI\Node.cs" />
     <Compile Include="Controller\Game.cs" />

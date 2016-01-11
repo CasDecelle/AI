@@ -10,26 +10,20 @@ using System.Threading.Tasks;
 
 namespace Othello.AI
 {
-    public class State
+    public class StateSpace
     {
         private int maxDepth;
         private StateNode maxNode;
         private readonly Player maxPlayer;
         private List<StateNode> tree;
 
-        public State(Board b, int d, Player p, Tuple<int, int> lastMove)
+        public StateSpace(Board b, int d, Player p, Tuple<int, int> lastMove)
         {
             this.maxDepth = d;
             this.maxPlayer = p;
             this.BuildState(b);
             this.maxNode.Move = lastMove;
             this.tree = new List<StateNode>();
-            //this.maxNode.CalculateHeuristic();
-        }
-
-        public State(State previousState)
-        {
-            //board = previousState.board;
         }
 
         private void BuildState(Board b)

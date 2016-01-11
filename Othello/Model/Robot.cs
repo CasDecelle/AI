@@ -28,7 +28,7 @@ namespace Othello.Model
 
         public Tuple<int, int> GetBestMove(Tuple<int, int> lastMove)
         {
-            State state = new State(board, 3, this, lastMove);
+            StateSpace state = new StateSpace(board, 3, this, lastMove);
             state.PrintTree();
             StateNode bestNode = state.GetBestMove();
             return bestNode.Move;

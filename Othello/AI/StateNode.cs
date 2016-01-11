@@ -56,7 +56,7 @@ namespace Othello.AI
         public void CalculateHeuristicValue()
         {
             if(this.IsLeaf) {
-                heuristicValue = board.GetHeuristicValue(maxPlayer.Color);
+                heuristicValue = board.GetHeuristicValue();
                 return;
             }
             switch (this.NodeType)

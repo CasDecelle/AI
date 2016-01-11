@@ -9,6 +9,6 @@ namespace Othello.AI
 {
     public interface HeuristicValueDeterminator
     {
-        double CalculateHeuristicValue(AIBoard b, DiscColor color);
+        double CalculateHeuristicValue(AIBoard b);
     }
 }
